@@ -1,0 +1,11 @@
+¡Hola! Qué gusto saludarte. Hoy vamos a dominar un tema avanzado pero fascinante: los condicionales mixtos. Estos se usan cuando queremos conectar un tiempo pasado con un resultado presente, o viceversa. Es decir, cuando el tiempo de la condición y el del resultado no coinciden.
+
+Primero, veamos el tipo A: Pasado irreal con resultado presente. Imagina que quieres decir que, si hubieras hecho algo en el pasado, tu situación actual sería distinta. Aquí usamos el pasado perfecto en la parte del if, y el would con el verbo en su forma base en la parte del resultado. Por ejemplo: If I had studied harder, I would have a degree now. Fíjate bien: had se pronuncia como jad, con una j suave, y would suena como wud. Al decir If I had studied, estamos hablando de algo que no pasó, y al decir I would have a degree now, hablamos de tu realidad actual.
+
+Ahora, el tipo B: Condición permanente con resultado pasado. Esto ocurre cuando una característica tuya o una situación constante influyó en algo que pasó antes. Aquí usamos el pasado simple en la parte del if, y would have seguido del participio en la parte del resultado. Por ejemplo: If I spoke German, I would have understood the meeting. Aquí, el hecho de no hablar alemán es algo constante, y el no haber entendido la reunión es el resultado pasado.
+
+Sobre la puntuación, es muy sencillo: si empiezas tu oración con la palabra if, siempre debes poner una coma antes de pasar a la segunda parte. Pero, si decides poner la parte del resultado primero, entonces no necesitas ninguna coma.
+
+Para cerrar, ten mucho cuidado con estos errores comunes. Primero, nunca uses would dentro de la parte que lleva if. Es incorrecto decir if I would have known; lo correcto es if I had known. Segundo, recuerda que los condicionales mixtos son hipotéticos, así que olvídate de usar will, ya que eso rompería la lógica del condicional. Y finalmente, en el tipo B, asegúrate siempre de usar el participio después de would have.
+
+Practica estas estructuras pensando en situaciones de tu propia vida. Verás que, una vez que entiendes la lógica del tiempo, ¡te sentirás mucho más fluido y preciso al hablar! Sigue practicando y nos vemos en la próxima lección.

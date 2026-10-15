@@ -1,0 +1,281 @@
+<resources>
+    <string name="app_name">GrammarAI</string>
+    <string name="tagline">Interactive English Mastery</string>
+
+    <!-- Navigation & Common -->
+    <string name="nav_back">Back</string>
+    <string name="nav_feed">Feed</string>
+    <string name="nav_radar">Analytics</string>
+    <string name="nav_settings">Settings</string>
+    <string name="action_close">Close</string>
+    <string name="action_retry">Retry</string>
+    <string name="action_skip">Skip</string>
+    <string name="action_continue">Continue</string>
+    <!-- Settings Strings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_save">Save</string>
+    <string name="settings_saved_success">Settings saved successfully</string>
+    <string name="settings_profile_title">Profile</string>
+    <string name="settings_profile_desc">Set your display name. If empty, the default \"neko\" is used.</string>
+    <string name="settings_profile_name_label">Display Name</string>
+    <string name="settings_profile_name_placeholder">neko</string>
+    <string name="settings_byok_title">API Key (Gemini)</string>
+    <string name="settings_byok_desc">Connect your Gemini API Key for live audio evaluation and feedback.</string>
+    <string name="settings_byok_placeholder">AIzaSy…</string>
+    <string name="settings_byok_test_btn">Test Connection</string>
+    <string name="settings_byok_testing">Testing…</string>
+    <string name="settings_byok_valid">Valid</string>
+    <string name="settings_byok_invalid">Invalid</string>
+    <string name="settings_lang_title">Language &amp; Voices</string>
+    <string name="settings_lang_desc">Interface language, curriculum, and audio narration.</string>
+    <string name="settings_lang_es">Bilingual (ES)</string>
+    <string name="settings_lang_en">English (EN)</string>
+    <string name="settings_prompts_title">AI System Prompts</string>
+    <string name="settings_prompts_desc">Configure behavior, tone, and feedback style.</string>
+    <string name="settings_prompt_persona_title">Conversation Partner Prompt</string>
+    <string name="settings_prompt_reading_title">Reading &amp; Pronunciation Prompt</string>
+    <string name="settings_prompt_suggestions_title">Suggested Replies Prompt</string>
+    <string name="settings_prompts_reset">Reset Prompts to Default</string>
+    <string name="settings_reminder_title">Daily Reminders</string>
+    <string name="settings_reminder_desc">Receive a push notification to practice and maintain your streak.</string>
+    <string name="settings_reminder_time_label">Reminder Time</string>
+    <string name="settings_reminder_change_time">Change Time</string>
+    <string name="settings_reminder_perm_denied">Notification permission is required to receive daily practice reminders.</string>
+
+    <!-- Onboarding Chat Flow -->
+    <string name="onboarding_ai_name">Grammar</string>
+    <string name="onboarding_ai_sub">English Practice</string>
+    <string name="onboarding_welcome">Welcome to your daily English study space.</string>
+    <string name="onboarding_ask_name">We will customize your daily lessons. What should we call you?</string>
+    <string name="onboarding_name_placeholder">Enter your name…</string>
+    <string name="onboarding_nice_to_meet">Nice to meet you, %1$s.</string>
+    <string name="onboarding_ask_language">What is your current English level?</string>
+    <string name="onboarding_immersion_note">Practice with natural English text and instant lookup whenever you need it.</string>
+    <string name="onboarding_ask_goal">What is your main objective?</string>
+    <string name="onboarding_goal_fluency">Speaking Fluency</string>
+    <string name="onboarding_goal_grammar">Grammar Accuracy</string>
+    <string name="onboarding_goal_work">Workplace Communication</string>
+    <string name="onboarding_goal_confidence">Everyday Conversation</string>
+    <string name="onboarding_ask_byok">Connect your API Key to enable instant exercise evaluation:</string>
+    <string name="onboarding_byok_hint">Paste API Key… (or skip for offline demo)</string>
+    <string name="onboarding_btn_test_key">Test Connection</string>
+    <string name="onboarding_btn_launch">Continue</string>
+    <string name="onboarding_byok_open_portal">Get free key at Google AI Studio ↗</string>
+    <string name="onboarding_byok_skip_btn">Skip &amp; use default key</string>
+    <string name="onboarding_key_verified">Connection verified</string>
+    <string name="onboarding_key_invalid">Verification failed. Check your key.</string>
+    <string name="onboarding_loading_title">Preparing Curriculum…</string>
+    <string name="onboarding_loading_subtitle">Configuring exercises, vocabulary models, and pronunciation notes</string>
+    <string name="onboarding_finalizing_title">Setting Up Your Workspace…</string>
+    <string name="onboarding_finalizing_subtitle">Loading daily modules and exercise library</string>
+    <string name="onboarding_status_online">Ready</string>
+    <string name="onboarding_status_speaking">Playing audio…</string>
+    <string name="onboarding_status_typing">Preparing prompt…</string>
+    <string name="onboarding_time_now">Just now</string>
+    <string name="onboarding_audio_listen">Listen</string>
+    <string name="onboarding_audio_stop">Stop</string>
+
+    <!-- Progressive Feed & Progress Dashboard -->
+    <string name="feed_greeting">%1$s</string>
+    <string name="feed_lesson_number">MOD %1$s • %2$s</string>
+    <string name="feed_header_title">Curriculum</string>
+    <string name="feed_progress_title">Progress</string>
+    <string name="feed_progress_minimal_title">Pace</string>
+    <string name="feed_progress_minimal_streak">%1$d days</string>
+    <string name="feed_progress_minimal_lessons">%1$d/%2$d</string>
+    <string name="feed_progress_minimal_exercises">%1$d completed</string>
+    <string name="feed_progress_minimal_xp">%1$d XP</string>
+    <string name="feed_progress_lessons">%1$d of %2$d Modules Mastered</string>
+    <string name="feed_progress_exercises">%1$d Exercises Completed</string>
+    <string name="feed_progress_xp">%1$d XP</string>
+    <string name="feed_progress_streak">%1$d Day Streak</string>
+    <string name="feed_badge_grammar">Grammar</string>
+    <string name="feed_badge_everyday">Everyday</string>
+    <string name="feed_badge_workplace">Professional</string>
+    <string name="feed_pill_video">Video</string>
+    <string name="feed_pill_spoken">7 items</string>
+    <string name="feed_pill_dialogue">Dialogue</string>
+    <string name="feed_status_mastered">Mastered</string>
+    <string name="feed_status_in_progress">In Progress</string>
+    <string name="feed_status_ready">Ready</string>
+    <string name="feed_status_locked">Locked</string>
+    <string name="feed_lesson_locked_toast">Complete the previous lesson to unlock this lesson.</string>
+    <string name="lesson_btn_locked">Lesson Locked</string>
+    <string name="feed_btn_open">Open</string>
+    <string name="feed_btn_review">Review</string>
+    <string name="feed_btn_view_radar">View Analytics</string>
+    <string name="feed_completed_lessons_goal_title">Weekly goal: %1$d/%2$d lessons</string>
+    <string name="feed_stat_goal">Goal</string>
+    <string name="celebration_goal_label">GOAL</string>
+    <string name="celebration_goal_active">%1$d/%2$d lessons completed towards your goal!</string>
+    <string name="settings_goal_title">Weekly Lesson Goal</string>
+    <string name="settings_goal_subtitle">Set your target number of lessons to complete each week</string>
+    <string name="settings_goal_pill_unit">lessons/wk</string>
+    <string name="settings_goal_hint">Your goal resets weekly to build momentum and consistency without daily streak stress.</string>
+    <string name="feed_stat_streak">Streak</string>
+    <string name="feed_stat_curriculum">Curriculum</string>
+    <string name="feed_stat_solved">Solved</string>
+    <string name="feed_stat_xp">XP</string>
+    <string name="feed_top_overview">OVERVIEW</string>
+    <string name="feed_top_daily_practice">Daily Practice</string>
+    <string name="feed_progress_weekly_pace">WEEKLY PACE</string>
+    <string name="feed_progress_target">%1$d%% TARGET</string>
+    <string name="feed_card_practice_items">%1$d practice items</string>
+    <string name="feed_card_video_guide">Video guide</string>
+
+    <!-- Lesson Detail View -->
+    <string name="lesson_speed_label">%1$sx</string>
+    <string name="lesson_takeaways_title">Notes &amp; Rules</string>
+    <string name="lesson_theory_title">Detailed Theory &amp; Concepts</string>
+    <string name="lesson_btn_start_practice">Start Practice</string>
+    <string name="lesson_btn_start_practice_count">Start Practice (%1$d Items)</string>
+    <string name="lesson_video_mock_banner">Lesson Video</string>
+    <string name="lesson_video_open_youtube">Watch on YouTube</string>
+    <string name="lesson_video_close">Close Video</string>
+    <string name="lesson_video_now_playing">Now Playing</string>
+
+    <!-- Practice Drills Runner (7 Exercises) -->
+    <string name="practice_drill_count">Exercise %1$d of %2$d</string>
+    <string name="drill_score_pts">%1$d pts</string>
+    <string name="drill_type_multiple_choice">Multiple Choice</string>
+    <string name="drill_type_reconstruct">Sentence Structure</string>
+    <string name="drill_type_fill_blank">Fill in the Blank</string>
+    <string name="drill_type_shadowing">Pronunciation</string>
+    <string name="drill_type_dialogue">Response Drill</string>
+    <string name="drill_listen_button">Listen</string>
+    <string name="drill_target_formula">Formula: %1$s</string>
+    <string name="drill_input_placeholder">Type your answer here…</string>
+    <string name="drill_btn_check">Check</string>
+    <string name="drill_btn_submit">Check</string>
+    <string name="drill_eval_analyzing">Checking response…</string>
+    <string name="drill_feedback_title">Correction &amp; Notes</string>
+    <string name="drill_feedback_correct">Correct</string>
+    <string name="drill_feedback_incorrect">Incorrect. Reference solution below:</string>
+    <string name="drill_correct_answer_label">Correct answer:</string>
+    <string name="drill_natural_alternative">Alternative:</string>
+    <string name="drill_btn_next">Next Exercise</string>
+    <string name="drill_btn_finish">Complete Session</string>
+    <string name="drill_reconstruct_instruction">Select tokens in sequential order:</string>
+    <string name="drill_reconstruct_clear">Clear</string>
+
+    <!-- Practice Completion Screen -->
+    <string name="practice_complete_title">Session Complete</string>
+    <string name="practice_complete_subtitle">All 7 curriculum exercises finished.</string>
+    <string name="practice_complete_xp">+50 XP</string>
+    <string name="practice_complete_accuracy">Accuracy: %1$d%%</string>
+    <string name="practice_complete_btn_feed">Back to Curriculum</string>
+    <string name="practice_complete_btn_radar">View Analytics</string>
+    <string name="practice_complete_fluency_score">Fluency Score</string>
+    <string name="practice_complete_exercises_done">Exercises Completed</string>
+    <string name="celebration_title">Lesson Completed!</string>
+    <string name="celebration_subtitle">Great work! You have mastered this lesson.</string>
+    <string name="celebration_xp_gained">+%1$d XP</string>
+    <string name="celebration_streak_active">%1$d-day streak active!</string>
+    <string name="celebration_dismiss_hint">Tap anywhere or continue in %1$ds</string>
+    <string name="feed_completed_deck_title">Mastered Lessons (%1$d)</string>
+    <string name="feed_completed_deck_empty">No completed lessons yet</string>
+    <string name="feed_completed_deck_badge">%1$d in deck</string>
+    <string name="feed_completed_dialog_score">Score: %1$d%%</string>
+
+    <!-- Dual Translation Engine -->
+    <string name="trans_tap_hint">Tap any word for instant translation</string>
+    <string name="trans_deep_nuance_btn">Deep Context</string>
+    <string name="trans_deep_explaining">Looking up context…</string>
+
+    <!-- Multi-Skill Spiderweb Analytics -->
+    <string name="radar_title">Curriculum Analytics</string>
+    <string name="radar_subtitle">Overview</string>
+    <string name="radar_card_title">Proficiency</string>
+    <string name="radar_card_cefr">Level: Intermediate</string>
+    <string name="radar_badge_b1">B1</string>
+    <string name="radar_skill_pronunciation">Pronunciation</string>
+    <string name="radar_skill_fluency">Fluency</string>
+    <string name="radar_skill_intonation">Intonation</string>
+    <string name="radar_skill_grammar">Grammar</string>
+    <string name="radar_skill_vocabulary">Vocabulary</string>
+    <string name="radar_skill_productive">Productive Output</string>
+    <string name="radar_skill_pragmatics">Pragmatics &amp; Immersion</string>
+    <string name="radar_skill_receptive">Receptive Skills</string>
+    <string name="radar_skill_structure">Core Grammar</string>
+    <string name="radar_skill_lexicon">Core Lexicon</string>
+    <string name="radar_skill_pts">%1$d pts</string>
+    <string name="radar_keep_practicing">Continue modules to earn competency points and level up.</string>
+    <string name="radar_btn_go_lessons">Curriculum</string>
+    <string name="radar_top_strength">Strongest: %1$s (%2$d pts)</string>
+    <string name="radar_growth_priority">Focus: %1$s (%2$d pts)</string>
+    <string name="radar_top_strength_label">Strongest</string>
+    <string name="radar_growth_priority_label">Focus Area</string>
+    <string name="feed_radar_btn">Analytics</string>
+    <string name="lesson_video_play">Play</string>
+    <string name="lesson_video_pause">Pause</string>
+
+    <!-- 5 Core Skill Categories -->
+    <string name="category_productive">Productive Output</string>
+    <string name="category_pragmatics">Pragmatics</string>
+    <string name="category_receptive">Receptive Skills</string>
+    <string name="category_structure">Core Grammar</string>
+    <string name="category_lexicon">Core Lexicon</string>
+    <string name="category_pronunciation">Pronunciation</string>
+    <string name="category_fluency">Fluency</string>
+    <string name="category_intonation">Intonation</string>
+    <string name="category_grammar">Grammar</string>
+    <string name="category_vocabulary">Vocabulary</string>
+
+    <!-- Exercise Drill Types -->
+    <string name="drill_type_repeat_after_me">Pronunciation Drill</string>
+    <string name="drill_type_intonation_challenge">Cadence &amp; Rhythm</string>
+    <string name="drill_type_long_reading">Reading Cadence</string>
+    <string name="drill_type_reading">Reading Comprehension</string>
+    <string name="drill_type_listening_passage">Listening Passage</string>
+    <string name="drill_type_conversation">Dialogue Simulation</string>
+    <string name="drill_type_vocabulary_match">Vocabulary In Context</string>
+    <string name="drill_reading_passage">Reading Passage</string>
+    <string name="drill_dialogue_context">Dialogue Context</string>
+    <string name="drill_phonetic_target">Phonetics: %1$s</string>
+    <string name="drill_audio_play">Play Audio</string>
+    <string name="drill_audio_pause">Pause Audio</string>
+    <string name="drill_audio_speaking">Playing…</string>
+    <string name="drill_assisted_conv_badge">Audio Partner</string>
+    <string name="drill_speak_aloud_prompt">Read and speak your response:</string>
+    <string name="drill_speak_aloud_hint">Speak clearly</string>
+    <string name="drill_btn_continue_conversation">Continue</string>
+    <string name="drill_btn_skip_voice_exercise">Skip</string>
+    <string name="drill_record_listening">Recording... Tap to send</string>
+    <string name="drill_record_tap_speak">Tap to record / Tap to send</string>
+    <string name="drill_record_you_said">Detected: “%1$s”</string>
+    <string name="drill_record_accuracy">Accuracy: %1$d%%</string>
+    <string name="drill_skip_exercise">Skip</string>
+    <string name="drill_live_gemini_speaking">Audio output playing…</string>
+    <string name="drill_live_listening">Recording... Tap to send</string>
+    <string name="drill_live_tap_speak">Tap to Speak Live Voice Response</string>
+    <string name="drill_live_suggested_reply">Suggested response:</string>
+    <string name="drill_live_preparing_suggestion">Loading reference…</string>
+    <string name="drill_live_partner_waiting">Live channel connected. Gemini is listening to your voice…</string>
+    <string name="drill_live_thinking">Gemini is thinking…</string>
+    <string name="drill_live_mic_speaking">AI Speaking (Speak anytime)</string>
+    <string name="drill_live_mic_standby">Gemini Thinking…</string>
+    <string name="drill_live_mic_active">Mic Active (Full-Duplex)</string>
+    <string name="drill_live_mic_muted">Mic Muted (Tap to un-mute)</string>
+    <string name="drill_live_sub_playing">Speak anytime to interrupt</string>
+    <string name="drill_live_sub_waiting">Waiting for AI response…</string>
+    <string name="drill_live_sub_speak">Speak in English or Spanish</string>
+    <string name="drill_live_sub_tap">Tap to un-mute microphone</string>
+    <string name="permission_mic_required">Microphone permission required for audio practice</string>
+
+    <!-- AI Explanation & Evaluation Strings -->
+    <string name="drill_ai_explain_button">Explain with AI</string>
+    <string name="drill_ai_explaining">Analyzing with AI…</string>
+    <string name="drill_ai_override_badge">Validated by AI</string>
+    <string name="drill_ai_override_celebration">AI evaluated your answer as valid! Points awarded.</string>
+    <string name="drill_ai_dialog_title_valid">Answer Accepted by AI</string>
+    <string name="drill_ai_dialog_title_incorrect">AI Pedagogical Analysis</string>
+    <string name="drill_ai_dialog_specific_title">Specific Analysis</string>
+    <string name="drill_ai_dialog_general_title">Step-by-step Breakdown</string>
+    <string name="drill_ai_dialog_close">Got it</string>
+
+    <!-- Lesson TopBar & On-Demand Audio Status -->
+    <string name="lesson_status_completed">Completed</string>
+    <string name="lesson_action_complete">Complete</string>
+    <string name="lesson_audio_downloading_pack">Downloading audio (%1$d%%)…</string>
+    <string name="lesson_audio_pack_ready">Audio ready</string>
+</resources>

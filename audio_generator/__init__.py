@@ -1,0 +1,36 @@
+"""
+audio_generator package
+Modular audio generation system for GrammarAI using Gemini TTS and LLM script adaptation.
+"""
+
+from .config import (
+    BASE_AUDIO_DIR,
+    CURRICULUM_FILES,
+    DEFAULT_API_KEY,
+    DEFAULT_API_KEYS,
+    EXERCISE_VOICES,
+    GENERIC_PROMPTS,
+    ONBOARDING_FALLBACK_VOICE,
+    ONBOARDING_MODEL,
+    ONBOARDING_VOICE,
+    TEXT_MODELS,
+    THEORY_FALLBACK_VOICE,
+    THEORY_VOICE,
+    TTS_MODELS,
+)
+
+__all__ = [
+    "BASE_AUDIO_DIR",
+    "CURRICULUM_FILES",
+    "DEFAULT_API_KEY",
+    "DEFAULT_API_KEYS",
+    "EXERCISE_VOICES",
+    "GENERIC_PROMPTS",
+    "ONBOARDING_FALLBACK_VOICE",
+    "ONBOARDING_MODEL",
+    "ONBOARDING_VOICE",
+    "TEXT_MODELS",
+    "THEORY_FALLBACK_VOICE",
+    "THEORY_VOICE",
+    "TTS_MODELS",
+]

@@ -1,0 +1,33 @@
+Hello and welcome! Today, we are mastering one of the most powerful tools in English grammar: the passive voice.
+
+In everyday active sentences, we usually focus on who is doing the action. For instance: The chef prepares the meal. But what if the food itself is the true star of the show? That is where the passive voice shines. We use the passive voice to shift attention from the person performing the action to the person or thing receiving it. It is also extremely useful when the doer is unknown, obvious, or simply not important.
+
+Here is the universal recipe for creating a passive sentence. First, take the receiver of the action and make it your new subject. Next, add the auxiliary verb be, conjugated to match the tense of the sentence. Then, add your main verb in its past participle form. Finally, if you still want to mention who performed the action, you can add the word by followed by the agent, though this is often completely optional.
+
+Let us walk through how this works across different tenses.
+
+In the present simple, active voice says: The chef prepares the meal. In the passive, this becomes: The meal is prepared by the chef.
+
+In the present continuous, active voice says: The team is writing the report. In the passive, we add the word being: The report is being written by the team.
+
+For the past simple, we change the auxiliary verb to the past. Active: They built this bridge in 1990. Passive: This bridge was built in 1990. Notice how natural it feels to drop the doer entirely here, because the bridge is what truly matters.
+
+In the past continuous, active voice says: She was fixing the car. In the passive, this becomes: The car was being fixed by her.
+
+With the present perfect, we bring in the word been. Active: Someone has stolen my bicycle. Passive: My bicycle has been stolen. We do not need to say by someone, because the person is unknown.
+
+For the future simple, we use will be. Active: The company will launch the product. Passive: The product will be launched by the company.
+
+And with modal verbs like must, should, or can, simply follow the modal with be and the past participle. Active: Employees must submit reports. Passive: Reports must be submitted by employees.
+
+Now, let us review a few common pitfalls so you can avoid them with confidence.
+
+First, always ensure the verb be reflects the correct tense and agrees with your new subject.
+
+Second, do not forget the crucial word being in continuous structures. Saying the car was fixed means something entirely different from the car was being fixed.
+
+Third, remember that intransitive verbs—verbs that do not take an object, like arrive, sleep, or happen—can never be used in the passive voice. We cannot say an accident was happened; we simply say an accident happened.
+
+Finally, resist the urge to add by someone when the actor is obvious or irrelevant. The passive voice is meant to streamline your speech, not clutter it.
+
+Keep these patterns in mind, try using them in your conversations, and you will sound more natural and precise every day. Happy learning!

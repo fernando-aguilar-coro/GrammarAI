@@ -1,0 +1,25 @@
+Hola a todos. Hoy vamos a dominar un tema fundamental en inglés para contar historias y anécdotas: el reported speech, también conocido como estilo indirecto. Esto nos sirve para explicar qué dijo otra persona, pero sin repetir exactamente sus palabras entre comillas.
+
+Empecemos con las declaraciones afirmativas y negativas. La regla de oro aquí se llama backshift, que significa dar un paso hacia atrás en el tiempo verbal, siempre que el verbo que introduce la frase esté en pasado, como said o told. 
+
+Por ejemplo, si alguien te dice en presente simple: I am happy, al reportarlo dices: He said he was happy. Dimos un salto al pasado simple. 
+Si usan presente continuo: She is working, cambia a pasado continuo: She said she was working.
+El presente perfecto y el pasado simple dan un salto hacia el pasado perfecto. Por ejemplo: They have finished, se convierte en: They said they had finished. Y si dijeron: He went home, reportamos: He said he had gone home.
+Con los verbos modales ocurre lo mismo: will cambia a would, can cambia a could, may se convierte en might, y must pasa a had to. 
+
+Ten en cuenta dos excepciones importantes: si la persona introduce la frase en presente, como he says, no cambiamos los tiempos. Y si estamos hablando de una verdad universal o científica, como the Earth is round, la Tierra es redonda, el tiempo se mantiene igual.
+
+Al narrar, también cambian las referencias de tiempo, lugar y persona. Por ejemplo, now pasa a ser then o at that moment. Today cambia a that day. Yesterday se convierte en the day before. Tomorrow pasa a ser the next day. Here cambia a there, y this cambia a that. Del mismo modo, los pronombres se ajustan a quien habla: si alguien dice I like my job, tú dirás She said she liked her job.
+
+Mucho cuidado con la diferencia entre say, que se pronuncia sei, y tell, que se pronuncia tel. Con say nunca ponemos a la persona inmediatamente después: decimos He said he was tired. En cambio, con tell siempre indicamos a quién se le habla: He told me he was tired. Decir he said me es un error muy común que debemos evitar.
+
+Ahora pasemos a las preguntas reportadas. El secreto aquí es que la pregunta pierde su formato interrogativo y se convierte en una afirmación, así que eliminamos los auxiliares do, does y did, y el sujeto vuelve a ir antes del verbo.
+Si la pregunta es de sí o no, usamos if o whether, que se pronuncia uéder. Por ejemplo, si te preguntan: Are you coming?, reportas: He asked if I was coming. 
+Si la pregunta empieza con una palabra interrogativa como what, where o why, mantenemos esa palabra de enlace. Si alguien pregunta: Where do you live?, tú dices: He asked where I lived, sin usar did y cambiando el verbo a pasado.
+
+Por último, para reportar órdenes, peticiones o consejos, la estructura es muy sencilla: usamos el verbo de reporte, seguido del objeto y un verbo en infinitivo con to. 
+Si te dicen: Close the door, reportas: He told me to close the door. 
+Si la orden es negativa, como Don't touch that, simplemente agregamos not antes de to: She told him not to touch that. 
+Y si es un favor amable como Please help me, usamos ask: He asked me to help him.
+
+Recuerda siempre: da un paso atrás en el tiempo verbal, elimina las inversiones en las preguntas y no confundas say con tell. Con un poco de práctica, el reported speech te saldrá de forma completamente natural. ¡A practicar!

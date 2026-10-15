@@ -1,0 +1,578 @@
+[
+  {
+    "id": "airport",
+    "theme": "El Aeropuerto: Check-in y Embarque",
+    "topic_en": "Airport Check-in and Boarding",
+    "cefr": "A1",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "El Aeropuerto: Mostrador de Check-in",
+        "summary": "Presenta tu pasaporte, entrega tu equipaje y pide tu asiento preferido."
+      },
+      {
+        "partIndex": 2,
+        "title": "El Aeropuerto: Control de Seguridad",
+        "summary": "Sigue las instrucciones del personal y pasa el control sin contratiempos."
+      },
+      {
+        "partIndex": 3,
+        "title": "El Aeropuerto: Puerta de Embarque",
+        "summary": "Escucha anuncios de abordaje, confirma tu grupo y sube al avión."
+      }
+    ]
+  },
+  {
+    "id": "hotel",
+    "theme": "El Hotel: Registro y Estadía",
+    "topic_en": "Hotel Check-in and Stay",
+    "cefr": "A1",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "El Hotel: Registro de Llegada",
+        "summary": "Confirma tu reserva en recepción y recibe la llave de tu habitación."
+      },
+      {
+        "partIndex": 2,
+        "title": "El Hotel: Servicios y Peticiones",
+        "summary": "Pide toallas extras, la clave del Wi-Fi y consulta el horario del desayuno."
+      },
+      {
+        "partIndex": 3,
+        "title": "El Hotel: Check-out y Salida",
+        "summary": "Entrega la llave, revisa tu cuenta y solicita un taxi al salir."
+      }
+    ]
+  },
+  {
+    "id": "restaurant",
+    "theme": "El Restaurante: Almuerzo y Cena",
+    "topic_en": "Restaurant Dining",
+    "cefr": "A1",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "El Restaurante: Mesa y Menú",
+        "summary": "Pide una mesa para dos y consulta el menú del día."
+      },
+      {
+        "partIndex": 2,
+        "title": "El Restaurante: Ordenando la Comida",
+        "summary": "Pide tus platos principales y aclara restricciones alimentarias."
+      },
+      {
+        "partIndex": 3,
+        "title": "El Restaurante: La Cuenta",
+        "summary": "Pide la cuenta, decide cómo pagar y deja una propina adecuada."
+      }
+    ]
+  },
+  {
+    "id": "doctor",
+    "theme": "La Farmacia y Consulta Médica",
+    "topic_en": "Pharmacy and Doctor Visit",
+    "cefr": "A2",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "La Farmacia: Describiendo Síntomas",
+        "summary": "Explica que tienes dolor de cabeza o garganta y pide medicina sin receta."
+      },
+      {
+        "partIndex": 2,
+        "title": "La Farmacia: Dosis e Instrucciones",
+        "summary": "Pregunta con qué frecuencia tomar la medicina y posibles efectos."
+      },
+      {
+        "partIndex": 3,
+        "title": "La Consulta: En el Consultorio",
+        "summary": "Describe desde cuándo te sientes mal y responde preguntas del médico."
+      }
+    ]
+  },
+  {
+    "id": "shopping",
+    "theme": "De Compras: Ropa y Tiendas",
+    "topic_en": "Clothing Shopping",
+    "cefr": "A1",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "De Compras: Tallas y Colores",
+        "summary": "Pregunta si tienen una prenda en otra talla o color."
+      },
+      {
+        "partIndex": 2,
+        "title": "De Compras: Probador y Ajuste",
+        "summary": "Pide probarte ropa y expresa si te queda bien o pequeña."
+      },
+      {
+        "partIndex": 3,
+        "title": "De Compras: Caja y Devoluciones",
+        "summary": "Paga en caja y consulta sobre la política de cambios."
+      }
+    ]
+  },
+  {
+    "id": "supermarket",
+    "theme": "El Supermercado y Tienda de Comestibles",
+    "topic_en": "Supermarket and Grocery Shopping",
+    "cefr": "A1",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "El Supermercado: Pasillos y Productos",
+        "summary": "Pregunta por la ubicación de alimentos básicos y productos frescos."
+      },
+      {
+        "partIndex": 2,
+        "title": "El Supermercado: Pesar Frutas y Mostrador",
+        "summary": "Pide cantidades específicas en la fiambrería o sección de verduras."
+      },
+      {
+        "partIndex": 3,
+        "title": "El Supermercado: Caja y Formas de Pago",
+        "summary": "Paga tus compras, solicita bolsas y pide el ticket de compra."
+      }
+    ]
+  },
+  {
+    "id": "directions",
+    "theme": "Preguntando Direcciones en la Ciudad",
+    "topic_en": "Asking for and Giving Directions",
+    "cefr": "A1",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "Direcciones: ¿Dónde queda el lugar?",
+        "summary": "Pregunta a un transeúnte cómo llegar a un sitio conocido."
+      },
+      {
+        "partIndex": 2,
+        "title": "Direcciones: Giros, Cuadras y Cruces",
+        "summary": "Entiende giros a la izquierda, derecha y distancias por manzanas."
+      },
+      {
+        "partIndex": 3,
+        "title": "Direcciones: A Pie o en Transporte",
+        "summary": "Pregunta si es más rápido caminar o tomar el autobús."
+      }
+    ]
+  },
+  {
+    "id": "transit",
+    "theme": "Transporte Público: Autobús y Tren",
+    "topic_en": "Public Transit: Buses and Trains",
+    "cefr": "A1",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "Transporte: Compra de Billetes y Pases",
+        "summary": "Compra un billete sencillo o pase de transporte en ventanilla o máquina."
+      },
+      {
+        "partIndex": 2,
+        "title": "Transporte: Horarios, Líneas y Andenes",
+        "summary": "Confirma la plataforma correcta y el horario de salida del tren o autobús."
+      },
+      {
+        "partIndex": 3,
+        "title": "Transporte: Paradas y Anuncios a Bordo",
+        "summary": "Avisa al conductor tu parada y comprende los anuncios por altavoz."
+      }
+    ]
+  },
+  {
+    "id": "cafe_bakery",
+    "theme": "La Cafetería y Panadería",
+    "topic_en": "Bakery and Specialty Cafe",
+    "cefr": "A1",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "La Cafetería: Bebidas y Tamaños",
+        "summary": "Pide cafés especiales, tipo de leche y el tamaño adecuado."
+      },
+      {
+        "partIndex": 2,
+        "title": "La Cafetería: Pastelería y Opciones Dulces",
+        "summary": "Elige panes, bollos o bocadillos recién horneados."
+      },
+      {
+        "partIndex": 3,
+        "title": "La Cafetería: Para Llevar o Tomar Aquí",
+        "summary": "Aclara si consumirás en el local y pide servilletas o cubiertos."
+      }
+    ]
+  },
+  {
+    "id": "cinema",
+    "theme": "El Cine y Salidas de Ocio",
+    "topic_en": "Cinema Box Office and Movie Outing",
+    "cefr": "A1",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "El Cine: Entradas, Funciones y Butacas",
+        "summary": "Compra entradas para la próxima función y elige fila o asiento."
+      },
+      {
+        "partIndex": 2,
+        "title": "El Cine: Palomitas, Bebidas y Snacks",
+        "summary": "Pide combos de palomitas de maíz y refrescos en el mostrador de snacks."
+      },
+      {
+        "partIndex": 3,
+        "title": "El Cine: Comentarios de la Película",
+        "summary": "Opina sobre la película y si la recomiendas a tus amigos."
+      }
+    ]
+  },
+  {
+    "id": "flat_rental",
+    "theme": "Búsqueda y Alquiler de Apartamento",
+    "topic_en": "Apartment Hunting and Renting",
+    "cefr": "A2",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "Alquiler: Consultar Anuncio y Costes",
+        "summary": "Contacta al propietario sobre precio, servicios incluidos y disponibilidad."
+      },
+      {
+        "partIndex": 2,
+        "title": "Alquiler: Visita a la Vivienda",
+        "summary": "Recorre el piso, revisa las habitaciones y pregunta por las normas."
+      },
+      {
+        "partIndex": 3,
+        "title": "Alquiler: Contrato, Fianza y Entrega de Llaves",
+        "summary": "Aclara el depósito de fianza y fecha de mudanza."
+      }
+    ]
+  },
+  {
+    "id": "rental_car",
+    "theme": "Alquiler de Vehículos y Conducción",
+    "topic_en": "Car Rental and Driving Services",
+    "cefr": "A2",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "Coche de Alquiler: Mostrador, Seguro y Llaves",
+        "summary": "Recoge el vehículo reservado, revisa la cobertura del seguro y kilometraje."
+      },
+      {
+        "partIndex": 2,
+        "title": "En la Gasolinera: Combustible y Neumáticos",
+        "summary": "Pide llenar el depósito y revisa la presión del aire."
+      },
+      {
+        "partIndex": 3,
+        "title": "Devolución del Coche: Revisión y Cierre",
+        "summary": "Devuelve las llaves, confirma el depósito lleno y revisa posibles desperfectos."
+      }
+    ]
+  },
+  {
+    "id": "banking",
+    "theme": "El Banco y Trámites Financieros",
+    "topic_en": "Banking and Financial Services",
+    "cefr": "A2",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "El Banco: Apertura de Cuenta",
+        "summary": "Solicita abrir una cuenta corriente presentando documentos de identidad."
+      },
+      {
+        "partIndex": 2,
+        "title": "El Banco: Cajero y Transferencias",
+        "summary": "Resuelve un problema con el cajero o solicita una transferencia internacional."
+      },
+      {
+        "partIndex": 3,
+        "title": "El Banco: Tarjeta Bloqueada o Extraviada",
+        "summary": "Reporta una tarjeta perdida y solicita una de reemplazo de inmediato."
+      }
+    ]
+  },
+  {
+    "id": "emergency",
+    "theme": "Urgencias Médicas y Asistencia 911",
+    "topic_en": "Medical Emergencies and Urgent Assistance",
+    "cefr": "A2",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "Emergencias: Llamada al 911 y Ubicación",
+        "summary": "Indica la emergencia con calma y proporciona tu dirección exacta."
+      },
+      {
+        "partIndex": 2,
+        "title": "Emergencias: Describir Síntomas y Lesiones",
+        "summary": "Explica el estado de la persona afectada y si está consciente."
+      },
+      {
+        "partIndex": 3,
+        "title": "Emergencias: Paramédicos y Primeros Auxilios",
+        "summary": "Sigue las indicaciones del operador hasta la llegada del equipo de rescate."
+      }
+    ]
+  },
+  {
+    "id": "gym",
+    "theme": "El Gimnasio y Entrenamiento Físico",
+    "topic_en": "Gym Membership and Workout Routines",
+    "cefr": "A2",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "El Gimnasio: Membresía e Inscripción",
+        "summary": "Consulta precios de suscripción, horarios y visita las instalaciones."
+      },
+      {
+        "partIndex": 2,
+        "title": "El Gimnasio: Máquinas y Entrenador Personal",
+        "summary": "Pregunta cómo usar una máquina o solicita orientación para tu rutina."
+      },
+      {
+        "partIndex": 3,
+        "title": "El Gimnasio: Clases Grupales y Casilleros",
+        "summary": "Reserva tu plaza en una clase de yoga o spinning y usa el vestuario."
+      }
+    ]
+  },
+  {
+    "id": "tech_repairs",
+    "theme": "Servicio Técnico y Reparaciones",
+    "topic_en": "Tech Support and Device Repairs",
+    "cefr": "A2",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "Servicio Técnico: Describir la Avería",
+        "summary": "Explica qué problema presenta tu teléfono inteligente o portátil."
+      },
+      {
+        "partIndex": 2,
+        "title": "Servicio Técnico: Presupuesto y Garantía",
+        "summary": "Consulta el coste estimado de reparación y si lo cubre la garantía."
+      },
+      {
+        "partIndex": 3,
+        "title": "Servicio Técnico: Retiro del Equipo",
+        "summary": "Comprueba que el dispositivo funcione y recibe la factura del servicio."
+      }
+    ]
+  },
+  {
+    "id": "sightseeing",
+    "theme": "Turismo, Museos y Monumentos",
+    "topic_en": "Tourism and Sightseeing Tours",
+    "cefr": "A2",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "Turismo: Información y Mapas",
+        "summary": "Pide recomendaciones de lugares emblemáticos en la oficina de turismo."
+      },
+      {
+        "partIndex": 2,
+        "title": "Turismo: Entradas y Audioguía",
+        "summary": "Compra boletos para una galería o museo y pide audioguía en tu idioma."
+      },
+      {
+        "partIndex": 3,
+        "title": "Turismo: Tour Guiado y Normas",
+        "summary": "Pregunta si se permite tomar fotos y sigue el recorrido del guía."
+      }
+    ]
+  },
+  {
+    "id": "hairdresser",
+    "theme": "En la Peluquería o Barbería",
+    "topic_en": "Hair Salon and Barber Shop",
+    "cefr": "A2",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "Peluquería: Pedir Cita y Estilo",
+        "summary": "Pide hora y explica qué tipo de corte o peinado deseas."
+      },
+      {
+        "partIndex": 2,
+        "title": "Peluquería: Lavado y Ajuste del Corte",
+        "summary": "Indica el largo deseado y si el agua o temperatura están bien."
+      },
+      {
+        "partIndex": 3,
+        "title": "Peluquería: Acabado, Productos y Pago",
+        "summary": "Pide recomendaciones de productos para el cabello y abona el servicio."
+      }
+    ]
+  },
+  {
+    "id": "post_office",
+    "theme": "La Oficina de Correos y Envíos",
+    "topic_en": "Post Office and Package Shipping",
+    "cefr": "A2",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "Correos: Enviar una Carta o Paquete",
+        "summary": "Pide sellos y entrega un paquete para envío nacional o internacional."
+      },
+      {
+        "partIndex": 2,
+        "title": "Correos: Envío Urgente y Seguro",
+        "summary": "Elige la velocidad de envío y solicita número de seguimiento."
+      },
+      {
+        "partIndex": 3,
+        "title": "Correos: Recoger un Paquete",
+        "summary": "Muestra tu identificación y número de aviso para retirar correspondencia."
+      }
+    ]
+  },
+  {
+    "id": "social_meet",
+    "theme": "Reuniones Sociales y Amistades",
+    "topic_en": "Social Gatherings and Networking",
+    "cefr": "A2",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "Vida Social: Romper el Hielo",
+        "summary": "Inicia una conversación casual con personas nuevas en una reunión."
+      },
+      {
+        "partIndex": 2,
+        "title": "Vida Social: Intereses y Pasatiempos",
+        "summary": "Comparte tus gustos musicales, deportes favoritos y planes de fin de semana."
+      },
+      {
+        "partIndex": 3,
+        "title": "Vida Social: Intercambio de Contactos",
+        "summary": "Pide el número o redes sociales para mantenerse en contacto."
+      }
+    ]
+  },
+  {
+    "id": "job_interview",
+    "theme": "La Entrevista de Trabajo",
+    "topic_en": "Job Interview and Career Background",
+    "cefr": "B1",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "Entrevista: Presentación y Trayectoria",
+        "summary": "Presenta tu experiencia laboral previa y tu formación académica con seguridad."
+      },
+      {
+        "partIndex": 2,
+        "title": "Entrevista: Fortalezas y Resolución de Problemas",
+        "summary": "Describe tus puntos fuertes con ejemplos de situaciones reales de trabajo."
+      },
+      {
+        "partIndex": 3,
+        "title": "Entrevista: Preguntas para el Empleador",
+        "summary": "Formula preguntas sobre la cultura de la empresa y los próximos pasos del proceso."
+      }
+    ]
+  },
+  {
+    "id": "workplace",
+    "theme": "En la Oficina y Reuniones de Trabajo",
+    "topic_en": "Professional Office and Team Meetings",
+    "cefr": "B1",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "En la Oficina: Coordinación Diaria",
+        "summary": "Comunícate con compañeros sobre entregables y estado de tareas."
+      },
+      {
+        "partIndex": 2,
+        "title": "En la Oficina: Participación en Reuniones",
+        "summary": "Expresa acuerdos, desacuerdos y aporta ideas constructivas en equipo."
+      },
+      {
+        "partIndex": 3,
+        "title": "En la Oficina: Correos y Fechas Límite",
+        "summary": "Redacta actualizaciones de proyectos y negocia extensiones de plazos."
+      }
+    ]
+  },
+  {
+    "id": "cust_service",
+    "theme": "Atención al Cliente y Reclamaciones",
+    "topic_en": "Customer Service and Resolving Complaints",
+    "cefr": "B1",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "Atención al Cliente: Explicar la Queja",
+        "summary": "Explica educadamente pero con firmeza el fallo de un producto o servicio recibido."
+      },
+      {
+        "partIndex": 2,
+        "title": "Atención al Cliente: Solicitar Solución",
+        "summary": "Pide una sustitución, reparación gratuita o reembolso del dinero."
+      },
+      {
+        "partIndex": 3,
+        "title": "Atención al Cliente: Confirmación y Cierre",
+        "summary": "Obtén el número de reclamación por escrito y agradece la resolución."
+      }
+    ]
+  },
+  {
+    "id": "hotel_issues",
+    "theme": "Incidencias en el Hotel y Quejas",
+    "topic_en": "Hotel Issues and Room Changes",
+    "cefr": "B1",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "Incidencias de Hotel: Averías en la Habitación",
+        "summary": "Comunica en recepción que el aire acondicionado o ducha no funcionan."
+      },
+      {
+        "partIndex": 2,
+        "title": "Incidencias de Hotel: Cambio de Habitación",
+        "summary": "Solicita que te trasladen a una habitación más silenciosa si persiste el ruido."
+      },
+      {
+        "partIndex": 3,
+        "title": "Incidencias de Hotel: Facturación y Descuentos",
+        "summary": "Revisa cargos erróneos en la cuenta final y aclara tarifas antes de pagar."
+      }
+    ]
+  },
+  {
+    "id": "travel_delays",
+    "theme": "Imprevistos de Viaje: Vuelos y Equipaje",
+    "topic_en": "Travel Delays and Lost Luggage",
+    "cefr": "B1",
+    "parts": [
+      {
+        "partIndex": 1,
+        "title": "Imprevistos: Vuelo Cancelado o Retrasado",
+        "summary": "Gestiona con la aerolínea la reubicación en otro vuelo o vales de comida."
+      },
+      {
+        "partIndex": 2,
+        "title": "Imprevistos: Reclamación de Maleta Perdida",
+        "summary": "Describe el equipaje extraviado en la ventanilla de objetos perdidos y da tu dirección."
+      },
+      {
+        "partIndex": 3,
+        "title": "Imprevistos: Compensación y Seguro de Viaje",
+        "summary": "Consulta tus derechos como pasajero y solicita constancia para tu aseguradora."
+      }
+    ]
+  }
+]
+
