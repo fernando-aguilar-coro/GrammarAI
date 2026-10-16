@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Play Store Screenshot Generator</title>
+    <!-- 1. Cargar React y ReactDOM desde CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 2. Cargar Babel para poder escribir JSX en el navegador -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <!-- Tailwind CSS para diseñar rápido -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Manrope", sans-serif;
+        }
+
+        .slide-preview {
+            position: relative;
+            flex: none;
+        }
+
+        .screenshot-canvas {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform-origin: top center;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 flex flex-col items-center justify-center min-h-screen p-8">
+
+    <div id="root"></div>
+
+    <!-- Script de React con JSX -->
+    <script type="text/babel">
+
+        // Componente reutilizable para cada captura
+        function PlayStoreScreenshot({ title, subtitle, bgGradient, imageSrc, imageAlt = title, index, previewScale }) {
+            return (
+                <div className="slide-preview" style={{ width: 1080 * previewScale, height: 1920 * previewScale }}>
+                    <div
+                        data-export-id={`slide-${index}`}
+                        className={`screenshot-canvas w-[1080px] h-[1920px] ${bgGradient} flex flex-col items-center justify-between pt-[96px] px-[72px] overflow-hidden shadow-2xl rounded-[36px]`}
+                        style={{ transform: `translateX(-50%) scale(${previewScale})` }}
+                    >
+
+                    {/* Encabezado de texto */}
+                    <div className="text-center text-white max-w-[900px]">
+                        <h1 className="text-[56px] font-extrabold mb-5 leading-[1.12] drop-shadow-md">
+                            {title}
+                        </h1>
+                        <p className="text-[28px] font-semibold leading-[1.4] opacity-95 drop-shadow">
+                            {subtitle}
+                        </p>
+                    </div>
+
+                    {/* Maqueta / Contenedor del teléfono */}
+                    <div className="w-[880px] h-[1380px] bg-neutral-950 rounded-t-[50px] p-5 pb-0 shadow-[0_-20px_50px_rgba(0,0,0,0.4)]">
+                        <div className="w-full h-full bg-slate-800 rounded-t-[38px] overflow-hidden border-4 border-neutral-800">
+                            <div
+                                role="img"
+                                aria-label={imageAlt}
+                                className="w-full h-full bg-cover bg-top"
+                                style={{ backgroundImage: `url("${imageSrc}")` }}
+                            />
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            );
+        }
+
+        // Componente principal donde defines tus capturas
+        function App() {
+            const [isDownloading, setIsDownloading] = React.useState(false);
+            const [downloadMessage, setDownloadMessage] = React.useState("");
+            const [previewScale, setPreviewScale] = React.useState(1);
+
+            React.useEffect(() => {
+                const updatePreviewScale = () => {
+                    const horizontalPadding = window.innerWidth <= 768 ? 32 : 64;
+                    setPreviewScale(Math.min(1, (window.innerWidth - horizontalPadding) / 1080));
+                };
+
+                updatePreviewScale();
+                window.addEventListener("resize", updatePreviewScale);
+                return () => window.removeEventListener("resize", updatePreviewScale);
+            }, []);
+            const slides = [
+                {
+                    title: "Take control of your money with Spent",
+                    subtitle: "Manage your money quickly and privately, with the option to sync your data to Google Drive.",
+                    bgGradient: "bg-gradient-to-br from-[#8f302b] via-[#a83e4a] to-[#803828]",
+                    imageSrc: "images/spent-screnshots/WhatsApp Image 2026-10-14 at 00.00.45 (3).jpeg",
+                    imageAlt: "Spent welcome screen with privacy, quick entry, and Google Drive sync options"
+                },
+                {
+                    title: "A budget that fits your life",
+                    subtitle: "Choose your profile type to tailor your budgeting cycle and cash flow.",
+                    bgGradient: "bg-gradient-to-br from-[#164c58] via-[#176c76] to-[#277c70]",
+                    imageSrc: "images/spent-screnshots/WhatsApp Image 2026-10-15 at 3.31.08 PM.jpeg",
+                    imageAlt: "Profile choices for people who are unemployed or have a fixed salary"
+                },
+                {
+                    title: "Your receipts, your choice",
+                    subtitle: "Choose where to store photos and receipts: Google Drive, the app, or your device.",
+                    bgGradient: "bg-gradient-to-br from-[#274d45] via-[#347461] to-[#4b8060]",
+                    imageSrc: "images/spent-screnshots/WhatsApp Image 2026-10-15 at 3.31.08 PM (1).jpeg",
+                    imageAlt: "Photo and receipt storage options for Google Drive, the app, or the device"
+                },
+                {
+                    title: "Your finances at a glance",
+                    subtitle: "See your net savings, income, expenses, and how much you can spend today.",
+                    bgGradient: "bg-gradient-to-br from-[#713d24] via-[#a34b2d] to-[#873b35]",
+                    imageSrc: "images/spent-screnshots/WhatsApp Image 2026-10-15 at 3.31.08 PM (2).jpeg",
+                    imageAlt: "Financial dashboard with net savings, income, expenses, daily budget, and categories"
+                },
+                {
+                    title: "Tools for your financial life",
+                    subtitle: "Manage savings, loans, recurring payments, investments, shared finances, and more.",
+                    bgGradient: "bg-gradient-to-br from-[#1e4c69] via-[#245e77] to-[#285b68]",
+                    imageSrc: "images/spent-screnshots/WhatsApp Image 2026-10-15 at 3.31.08 PM (3).jpeg",
+                    imageAlt: "Spent tools for savings, loans, recurring payments, exports, shared finances, and investments"
+                },
+                {
+                    title: "Make Spent yours",
+                    subtitle: "Set your pay cycle, theme, storage, currency, and language in one place.",
+                    bgGradient: "bg-gradient-to-br from-[#83373c] via-[#a4493e] to-[#82402f]",
+                    imageSrc: "images/spent-screnshots/WhatsApp Image 2026-10-15 at 3.31.09 PM.jpeg",
+                    imageAlt: "Spent settings for sync, pay cycle, theme, storage, currency, and language"
+                },
+                {
+                    title: "Understand your spending",
+                    subtitle: "Compare your balance, income, and expenses, and see how your categories break down.",
+                    bgGradient: "bg-gradient-to-br from-[#364d75] via-[#3b6680] to-[#287275]",
+                    imageSrc: "images/spent-screnshots/WhatsApp Image 2026-10-15 at 3.31.09 PM (1).jpeg",
+                    imageAlt: "Financial analytics comparing income and expenses, balance, and spending by category"
+                },
+                {
+                    title: "Keep your investments in view",
+                    subtitle: "Search for stocks, crypto, and other assets to keep your portfolio up to date.",
+                    bgGradient: "bg-gradient-to-br from-[#27584b] via-[#34795d] to-[#527c4b]",
+                    imageSrc: "images/spent-screnshots/WhatsApp Image 2026-10-15 at 3.31.09 PM (2).jpeg",
+                    imageAlt: "Asset search for a portfolio with stock and exchange-traded fund results"
+                },
+                {
+                    title: "Export your data to Excel",
+                    subtitle: "Export your records as a spreadsheet or share them with other apps.",
+                    bgGradient: "bg-gradient-to-br from-[#67383d] via-[#8a443d] to-[#71513b]",
+                    imageSrc: "images/spent-screnshots/WhatsApp Image 2026-10-15 at 3.31.09 PM (3).jpeg",
+                    imageAlt: "Dialog for exporting records to Excel or sharing them with other apps"
+                }
+            ];
+            async function downloadPhoneAssets() {
+                setIsDownloading(true);
+                setDownloadMessage("");
+
+                try {
+                    const zip = new JSZip();
+                    const assetsFolder = zip.folder("grammarai-play-store-screenshots-en");
+                    await document.fonts.ready;
+
+                    for (let index = 0; index < slides.length; index++) {
+                        setDownloadMessage(`Generating screenshot ${index + 1} of ${slides.length}...`);
+                        const element = document.querySelector(`[data-export-id="slide-${index}"]`);
+                        const canvas = await html2canvas(element, {
+                            backgroundColor: null,
+                            height: 1920,
+                            scale: 1,
+                            width: 1080,
+                            windowWidth: 1080,
+                            onclone: (clonedDocument) => {
+                                const clonedSlide = clonedDocument.querySelector(`[data-export-id="slide-${index}"]`);
+                                clonedSlide.style.setProperty("transform", "none", "important");
+                                clonedSlide.style.setProperty("left", "0", "important");
+                            }
+                        });
+                        const imageBlob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+                        if (!imageBlob) {
+                            throw new Error(`Could not generate screenshot ${index + 1}`);
+                        }
+
+                        const filename = slideFilename(slides[index].title);
+                        assetsFolder.file(`${String(index + 1).padStart(2, "0")}-${filename}.png`, imageBlob);
+                    }
+
+                    const zipBlob = await zip.generateAsync({ type: "blob" });
+                    const downloadUrl = URL.createObjectURL(zipBlob);
+                    const downloadLink = document.createElement("a");
+                    downloadLink.href = downloadUrl;
+                    downloadLink.download = "grammarai-play-store-screenshots-en.zip";
+                    downloadLink.click();
+                    window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 10000);
+                    setDownloadMessage("ZIP with the final screenshots downloaded.");
+                } catch (error) {
+                    setDownloadMessage("Could not generate the screenshots. Make sure this page is open from a local server.");
+                } finally {
+                    setIsDownloading(false);
+                }
+            }
+
+            function slideFilename(title) {
+                return title
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, "-")
+                    .replace(/^-|-$/g, "");
+            }
+
+            return (
+                <div className="flex w-full flex-col items-center gap-12">
+                    <div className="text-white text-center mb-4">
+                        <h2 className="text-2xl font-bold">Your screenshots are ready to export</h2>
+                        <p className="text-sm text-slate-400">Export the final slides as PNG files, ready for Play Store.</p>
+                        <button
+                            type="button"
+                            onClick={downloadPhoneAssets}
+                            disabled={isDownloading}
+                            className="mt-5 rounded-lg bg-orange-500 px-5 py-3 font-semibold text-slate-950 transition hover:bg-orange-400 disabled:cursor-wait disabled:opacity-60"
+                        >
+                            {isDownloading ? "Generating screenshots..." : "Download all screenshots"}
+                        </button>
+                        {downloadMessage && <p className="mt-2 text-sm text-slate-300" role="status">{downloadMessage}</p>}
+                    </div>
+
+                    {/* Renderiza todas las diapositivas automáticamente */}
+                    {slides.map((slide, index) => (
+                        <PlayStoreScreenshot
+                            key={index}
+                            title={slide.title}
+                            subtitle={slide.subtitle}
+                            bgGradient={slide.bgGradient}
+                            imageSrc={slide.imageSrc}
+                            imageAlt={slide.imageAlt}
+                            index={index}
+                            previewScale={previewScale}
+                        />
+                    ))}
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+
+</body>
+
+</html>

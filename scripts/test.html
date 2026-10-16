@@ -65,10 +65,11 @@
                     {/* Maqueta / Contenedor del teléfono */}
                     <div className="w-[880px] h-[1380px] bg-neutral-950 rounded-t-[50px] p-5 pb-0 shadow-[0_-20px_50px_rgba(0,0,0,0.4)]">
                         <div className="w-full h-full bg-slate-800 rounded-t-[38px] overflow-hidden border-4 border-neutral-800">
-                            <img
-                                src={imageSrc}
-                                alt={imageAlt}
-                                className="w-full h-full object-cover object-top"
+                            <div
+                                role="img"
+                                aria-label={imageAlt}
+                                className="w-full h-full bg-cover bg-top"
+                                style={{ backgroundImage: `url("${imageSrc}")` }}
                             />
                         </div>
                     </div>
@@ -94,80 +95,145 @@
                 window.addEventListener("resize", updatePreviewScale);
                 return () => window.removeEventListener("resize", updatePreviewScale);
             }, []);
-
+            // Slides de en
+            // const slides = [
+            //     {
+            //         title: "Learn English your way",
+            //         subtitle: "Choose your native language, then decide whether to immerse yourself in English or use the app in Spanish.",
+            //         bgGradient: "bg-gradient-to-br from-[#8f302b] via-[#a83e4a] to-[#803828]",
+            //         imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.45.jpeg",
+            //         imageAlt: "Initial setup for choosing a native language and selecting the app language"
+            //     },
+            //     {
+            //         title: "A pace that works for you",
+            //         subtitle: "Choose how many lessons to complete each week, from a casual routine to an intensive plan.",
+            //         bgGradient: "bg-gradient-to-br from-[#164c58] via-[#176c76] to-[#277c70]",
+            //         imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.45 (1).jpeg",
+            //         imageAlt: "Onboarding options for completing two, three, five, seven, or ten lessons per week"
+            //     },
+            //     {
+            //         title: "Your progress, always backed up",
+            //         subtitle: "Connect your Google account to sync your streaks, experience, and progress across devices.",
+            //         bgGradient: "bg-gradient-to-br from-[#274d45] via-[#347461] to-[#4b8060]",
+            //         imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.45 (2).jpeg",
+            //         imageAlt: "Cloud sync screen with Google sign-in and an option to skip"
+            //     },
+            //     {
+            //         title: "Practical lessons from day one",
+            //         subtitle: "Explore the level-based curriculum, check your weekly goals, and open English exercises for your level.",
+            //         bgGradient: "bg-gradient-to-br from-[#713d24] via-[#a34b2d] to-[#873b35]",
+            //         imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.45 (3).jpeg",
+            //         imageAlt: "Curriculum home screen with a weekly goal and vocabulary lessons organized by level"
+            //     },
+            //     {
+            //         title: "Make your study routine your own",
+            //         subtitle: "Set up your profile, weekly lesson goal, and daily reminders around your schedule.",
+            //         bgGradient: "bg-gradient-to-br from-[#1e4c69] via-[#245e77] to-[#285b68]",
+            //         imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.46.jpeg",
+            //         imageAlt: "Profile settings, weekly goal, notifications, and reminder time"
+            //     },
+            //     {
+            //         title: "Practice grammar with clear feedback",
+            //         subtitle: "Complete interactive exercises, choose the correct answer, and get an explanation to help you improve.",
+            //         bgGradient: "bg-gradient-to-br from-[#83373c] via-[#a4493e] to-[#82402f]",
+            //         imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.45 (1).jpeg",
+            //         imageAlt: "Possessive adjective exercise showing the correct answer and an explanation"
+            //     },
+            //     {
+            //         title: "Speak English with your AI coach",
+            //         subtitle: "Have a voice conversation, choose a topic, and practice with a coach who understands English and Spanish.",
+            //         bgGradient: "bg-gradient-to-br from-[#364d75] via-[#3b6680] to-[#287275]",
+            //         imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.45 (2).jpeg",
+            //         imageAlt: "Gemini Live voice conversation about TV shows and music, with controls to speak and change topics"
+            //     },
+            //     {
+            //         title: "Celebrate every lesson completed",
+            //         subtitle: "See your score, experience points, and skill breakdown when you finish a practice session.",
+            //         bgGradient: "bg-gradient-to-br from-[#27584b] via-[#34795d] to-[#527c4b]",
+            //         imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.46 (3).jpeg",
+            //         imageAlt: "Lesson summary showing score, XP earned, weekly goal, and skill analytics"
+            //     },
+            //     {
+            //         title: "Discover your English strengths",
+            //         subtitle: "Track your level and progress in vocabulary, grammar, comprehension, production, and immersion.",
+            //         bgGradient: "bg-gradient-to-br from-[#67383d] via-[#8a443d] to-[#71513b]",
+            //         imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.46 (4).jpeg",
+            //         imageAlt: "Curriculum analytics showing proficiency level and scores across skills"
+            //     }
+            // ];
+            // Slides de es
             const slides = [
                 {
-                    title: "Learn English your way",
-                    subtitle: "Choose your native language, then decide whether to immerse yourself in English or use the app in Spanish.",
+                    title: "Aprende inglés a tu manera",
+                    subtitle: "Elige tu idioma nativo y decide si quieres sumergirte en el inglés o usar la app en español.",
                     bgGradient: "bg-gradient-to-br from-[#8f302b] via-[#a83e4a] to-[#803828]",
                     imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.45.jpeg",
-                    imageAlt: "Initial setup for choosing a native language and selecting the app language"
+                    imageAlt: "Configuración inicial para elegir el idioma nativo y el idioma de la aplicación"
                 },
                 {
-                    title: "A pace that works for you",
-                    subtitle: "Choose how many lessons to complete each week, from a casual routine to an intensive plan.",
+                    title: "Un ritmo que se adapta a ti",
+                    subtitle: "Elige cuántas lecciones completar cada semana: desde una rutina relajada hasta un plan intensivo.",
                     bgGradient: "bg-gradient-to-br from-[#164c58] via-[#176c76] to-[#277c70]",
                     imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.45 (1).jpeg",
-                    imageAlt: "Onboarding options for completing two, three, five, seven, or ten lessons per week"
+                    imageAlt: "Opciones de incorporación para completar dos, tres, cinco, siete o diez lecciones por semana"
                 },
                 {
-                    title: "Your progress, always backed up",
-                    subtitle: "Connect your Google account to sync your streaks, experience, and progress across devices.",
+                    title: "Tu progreso, siempre respaldado",
+                    subtitle: "Conecta tu cuenta de Google para sincronizar tus rachas, experiencia y progreso en todos tus dispositivos.",
                     bgGradient: "bg-gradient-to-br from-[#274d45] via-[#347461] to-[#4b8060]",
                     imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.45 (2).jpeg",
-                    imageAlt: "Cloud sync screen with Google sign-in and an option to skip"
+                    imageAlt: "Pantalla de sincronización en la nube con inicio de sesión de Google y opción para omitir"
                 },
                 {
-                    title: "Practical lessons from day one",
-                    subtitle: "Explore the level-based curriculum, check your weekly goals, and open English exercises for your level.",
+                    title: "Lecciones prácticas desde el primer día",
+                    subtitle: "Explora el plan de estudios por niveles, revisa tus metas semanales y accede a ejercicios de inglés para tu nivel.",
                     bgGradient: "bg-gradient-to-br from-[#713d24] via-[#a34b2d] to-[#873b35]",
                     imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.45 (3).jpeg",
-                    imageAlt: "Curriculum home screen with a weekly goal and vocabulary lessons organized by level"
+                    imageAlt: "Inicio del plan de estudios con una meta semanal y lecciones de vocabulario organizadas por nivel"
                 },
                 {
-                    title: "Make your study routine your own",
-                    subtitle: "Set up your profile, weekly lesson goal, and daily reminders around your schedule.",
+                    title: "Adapta tu rutina de estudio",
+                    subtitle: "Configura tu perfil, tu meta semanal de lecciones y recordatorios diarios según tus horarios.",
                     bgGradient: "bg-gradient-to-br from-[#1e4c69] via-[#245e77] to-[#285b68]",
                     imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.46.jpeg",
-                    imageAlt: "Profile settings, weekly goal, notifications, and reminder time"
+                    imageAlt: "Ajustes del perfil, meta semanal, notificaciones y hora del recordatorio"
                 },
                 {
-                    title: "Practice grammar with clear feedback",
-                    subtitle: "Complete interactive exercises, choose the correct answer, and get an explanation to help you improve.",
+                    title: "Practica gramática con explicaciones claras",
+                    subtitle: "Resuelve ejercicios interactivos, elige la respuesta correcta y recibe una explicación para seguir mejorando.",
                     bgGradient: "bg-gradient-to-br from-[#83373c] via-[#a4493e] to-[#82402f]",
-                    imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.46 (1).jpeg",
-                    imageAlt: "Possessive adjective exercise showing the correct answer and an explanation"
+                    imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.45 (1).jpeg",
+                    imageAlt: "Ejercicio de adjetivos posesivos con la respuesta correcta y una explicación"
                 },
                 {
-                    title: "Speak English with your AI coach",
-                    subtitle: "Have a voice conversation, choose a topic, and practice with a coach who understands English and Spanish.",
+                    title: "Habla inglés con tu coach de IA",
+                    subtitle: "Conversa por voz, elige un tema y practica con un coach que entiende inglés y español.",
                     bgGradient: "bg-gradient-to-br from-[#364d75] via-[#3b6680] to-[#287275]",
                     imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.45 (2).jpeg",
-                    imageAlt: "Gemini Live voice conversation about TV shows and music, with controls to speak and change topics"
+                    imageAlt: "Conversación de voz de Gemini Live sobre series y música, con controles para hablar y cambiar de tema"
                 },
                 {
-                    title: "Celebrate every lesson completed",
-                    subtitle: "See your score, experience points, and skill breakdown when you finish a practice session.",
+                    title: "Celebra cada lección completada",
+                    subtitle: "Al terminar una práctica, consulta tu puntuación, los puntos de experiencia y el desglose de tus habilidades.",
                     bgGradient: "bg-gradient-to-br from-[#27584b] via-[#34795d] to-[#527c4b]",
                     imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.46 (3).jpeg",
-                    imageAlt: "Lesson summary showing score, XP earned, weekly goal, and skill analytics"
+                    imageAlt: "Resumen de la lección con puntuación, experiencia obtenida, meta semanal y análisis de habilidades"
                 },
                 {
-                    title: "Discover your English strengths",
-                    subtitle: "Track your level and progress in vocabulary, grammar, comprehension, production, and immersion.",
+                    title: "Descubre tus fortalezas en inglés",
+                    subtitle: "Sigue tu nivel y tu progreso en vocabulario, gramática, comprensión, expresión e inmersión.",
                     bgGradient: "bg-gradient-to-br from-[#67383d] via-[#8a443d] to-[#71513b]",
                     imageSrc: "images/WhatsApp Image 2026-10-14 at 00.00.46 (4).jpeg",
-                    imageAlt: "Curriculum analytics showing proficiency level and scores across skills"
+                    imageAlt: "Análisis del plan de estudios con nivel de dominio y puntuaciones por habilidad"
                 }
             ];
-
             async function downloadPhoneAssets() {
                 setIsDownloading(true);
                 setDownloadMessage("");
 
                 try {
                     const zip = new JSZip();
-                    const assetsFolder = zip.folder("grammarai-play-store-screenshots-en");
+                    const assetsFolder = zip.folder("grammarai-play-store-screenshots-es");
                     await document.fonts.ready;
 
                     for (let index = 0; index < slides.length; index++) {
@@ -198,7 +264,7 @@
                     const downloadUrl = URL.createObjectURL(zipBlob);
                     const downloadLink = document.createElement("a");
                     downloadLink.href = downloadUrl;
-                    downloadLink.download = "grammarai-play-store-screenshots-en.zip";
+                    downloadLink.download = "grammarai-play-store-screenshots-es.zip";
                     downloadLink.click();
                     window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 10000);
                     setDownloadMessage("ZIP with the final screenshots downloaded.");

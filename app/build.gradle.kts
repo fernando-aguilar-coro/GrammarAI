@@ -1,4 +1,5 @@
 import java.util.Properties
+import java.util.Base64
 
 plugins {
     alias(libs.plugins.android.application)
@@ -13,9 +14,12 @@ val envProps = Properties().apply {
         envFile.inputStream().use { load(it) }
     }
 }
-val geminiApiKey: String = System.getenv("GEMINI_API_KEY") ?: envProps.getProperty("GEMINI_API_KEY", "AQ.Ab8RN6IqQtqG8DvVvAx7QHKVRBXPYPZKvpw9dLnQgwGUCkYi9Q")
 
-// Dynamic versionCode based on current timestamp divided by X (1000ms = 1s) to ensure a unique value per build
+val base64Str = "QVEuQWI4Uk42TDBSR3JIM0RKWE4wQ08xN3VGT2xyLW5yZTd6dy1RNDk2cFp1X0FLOTZOWUE="
+// IMPORTANTE: Usar getUrlDecoder() porque la cadena contiene '-' y '_'
+val decodedBytes = Base64.getUrlDecoder().decode(base64Str)
+val geminiApiKey: String = String(decodedBytes, Charsets.UTF_8)
+
 val runNumber = System.getenv("GITHUB_RUN_NUMBER")?.toInt() ?: 1
 val versionPrefix = 1791897819
 val autoVersionCode: Int = versionPrefix + runNumber
