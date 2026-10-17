@@ -1,9 +1,10 @@
 package com.app.grammarai
 
+import android.os.Build
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -28,6 +29,7 @@ import com.app.grammarai.ui.practice.ExerciseRunnerScreen
 import com.app.grammarai.ui.practice.ExerciseRunnerViewModel
 import com.app.grammarai.ui.radar.SkillRadarScreen
 import com.app.grammarai.ui.radar.SkillRadarViewModel
+import androidx.core.view.WindowCompat
 import com.app.grammarai.ui.theme.DarkBackground
 import com.app.grammarai.ui.theme.GrammarAITheme
 
@@ -52,11 +54,11 @@ class MainActivity : ComponentActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setupEdgeToEdge()
         super.onCreate(savedInstanceState)
         val lang = runCatching { com.app.grammarai.data.local.PreferencesManager(this).appLanguage }.getOrDefault("es")
         LocaleHelper.applyLanguage(this, lang)
 
-        enableEdgeToEdge()
         setContent {
             GrammarAITheme {
                 Scaffold(
@@ -80,6 +82,20 @@ class MainActivity : ComponentActivity() {
         super.onConfigurationChanged(newConfig)
         val lang = runCatching { com.app.grammarai.data.local.PreferencesManager(this).appLanguage }.getOrDefault("es")
         LocaleHelper.applyLanguage(this, lang)
+    }
+
+    private fun setupEdgeToEdge() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.attributes = window.attributes.apply {
+                layoutInDisplayCutoutMode =
+                    WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
+            }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            window.isStatusBarContrastEnforced = false
+            window.isNavigationBarContrastEnforced = false
+        }
     }
 }
 
