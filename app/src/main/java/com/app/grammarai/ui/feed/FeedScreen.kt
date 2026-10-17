@@ -1,5 +1,8 @@
 package com.app.grammarai.ui.feed
 
+import android.app.Activity
+import android.content.Context
+import android.content.ContextWrapper
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -47,6 +50,7 @@ import com.app.grammarai.ui.theme.BorderSubtle
 import com.app.grammarai.ui.theme.DarkSurfaceCard
 import com.app.grammarai.ui.theme.TextMuted
 import com.app.grammarai.ui.theme.TextSecondary
+import com.google.android.play.core.review.ReviewManagerFactory
 
 @Composable
 fun FeedScreen(
@@ -55,7 +59,7 @@ fun FeedScreen(
     onNavigateToPractice: (String) -> Unit,
     onNavigateToRadar: () -> Unit,
     onNavigateToSettings: () -> Unit
-) {
+) { 
     val state by viewModel.state.collectAsState()
     val context = androidx.compose.ui.platform.LocalContext.current
     val listState = rememberLazyListState()
@@ -83,6 +87,21 @@ fun FeedScreen(
                 is FeedUiEffect.NavigateToPractice -> onNavigateToPractice(effect.lessonId)
                 is FeedUiEffect.NavigateToRadar -> onNavigateToRadar()
                 is FeedUiEffect.NavigateToSettings -> onNavigateToSettings()
+                is FeedUiEffect.RequestInAppReview -> {
+                    val activity = context.findActivity()
+                    if (activity != null) {
+                        runCatching {
+                            val reviewManager = ReviewManagerFactory.create(context)
+                            reviewManager.requestReviewFlow().addOnCompleteListener { request ->
+                                if (request.isSuccessful && !activity.isFinishing && !activity.isDestroyed) {
+                                    runCatching {
+                                        reviewManager.launchReviewFlow(activity, request.result)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 is FeedUiEffect.ShowToast -> {
                     android.widget.Toast.makeText(context, effect.message, android.widget.Toast.LENGTH_SHORT).show()
                 }
@@ -273,4 +292,10 @@ fun FeedScreen(
             )
         }
     }
+}
+
+private tailrec fun Context.findActivity(): Activity? = when (this) {
+    is Activity -> this
+    is ContextWrapper -> baseContext.findActivity()
+    else -> null
 }

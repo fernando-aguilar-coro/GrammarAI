@@ -129,6 +129,14 @@ class PreferencesManager(context: Context) {
         get() = prefs.getStringSet(KEY_COMPLETED_LESSONS, emptySet()) ?: emptySet()
         set(value) = prefs.edit().putStringSet(KEY_COMPLETED_LESSONS, value).apply()
 
+    var hasRequestedReviewAtFirstLesson: Boolean
+        get() = prefs.getBoolean(KEY_REVIEW_REQUESTED_FIRST_LESSON, false)
+        set(value) = prefs.edit().putBoolean(KEY_REVIEW_REQUESTED_FIRST_LESSON, value).apply()
+
+    var hasRequestedReviewAtThirteenthLesson: Boolean
+        get() = prefs.getBoolean(KEY_REVIEW_REQUESTED_THIRTEENTH_LESSON, false)
+        set(value) = prefs.edit().putBoolean(KEY_REVIEW_REQUESTED_THIRTEENTH_LESSON, value).apply()
+
     var highestUnlockedIndex: Int
         get() = prefs.getInt(KEY_HIGHEST_UNLOCKED_INDEX, 2)
         set(value) = prefs.edit().putInt(KEY_HIGHEST_UNLOCKED_INDEX, value.coerceAtLeast(2)).apply()
@@ -277,6 +285,8 @@ class PreferencesManager(context: Context) {
         private const val KEY_ONBOARDING_DONE = "key_onboarding_done"
         private const val KEY_SKILL_METRICS = "key_skill_metrics"
         private const val KEY_COMPLETED_LESSONS = "key_completed_lessons"
+        private const val KEY_REVIEW_REQUESTED_FIRST_LESSON = "key_review_requested_first_lesson"
+        private const val KEY_REVIEW_REQUESTED_THIRTEENTH_LESSON = "key_review_requested_thirteenth_lesson"
         private const val KEY_LESSON_SCORES = "key_lesson_scores"
         private const val KEY_EXERCISES_COMPLETED = "key_exercises_completed"
         private const val KEY_USER_XP = "key_user_xp"

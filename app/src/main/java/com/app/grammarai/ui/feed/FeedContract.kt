@@ -59,5 +59,6 @@ sealed interface FeedUiEffect : UiEffect {
     data class NavigateToPractice(val lessonId: String) : FeedUiEffect
     object NavigateToRadar : FeedUiEffect
     object NavigateToSettings : FeedUiEffect
+    object RequestInAppReview : FeedUiEffect
     data class ShowToast(val message: String) : FeedUiEffect
 }

@@ -121,6 +121,16 @@ class FeedViewModel(
             val hasMore = feedLessons.size > pagedLessons.size
 
             val completedCount = prefs.completedLessons.size
+            when (completedCount) {
+                1 -> if (!prefs.hasRequestedReviewAtFirstLesson) {
+                    prefs.hasRequestedReviewAtFirstLesson = true
+                    sendEffect(FeedUiEffect.RequestInAppReview)
+                }
+                13 -> if (!prefs.hasRequestedReviewAtThirteenthLesson) {
+                    prefs.hasRequestedReviewAtThirteenthLesson = true
+                    sendEffect(FeedUiEffect.RequestInAppReview)
+                }
+            }
             val dueForReview = sortedLessons.filter { srsEngine.isLessonDue(it.id) }.map { it.id }.toSet()
             val situationalProgress = com.app.grammarai.data.catalog.SituationalCatalog.getActiveProgress(prefs.completedLessons)
 
