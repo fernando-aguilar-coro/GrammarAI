@@ -296,7 +296,7 @@ class PreferencesManager(context: Context) {
         private const val KEY_CURRENT_WEEK_YEAR = "key_current_week_year"
         private const val KEY_HIGHEST_UNLOCKED_INDEX = "key_highest_unlocked_index"
         private val DEFAULT_API_KEY: String by lazy {
-            String(java.util.Base64.getUrlDecoder().decode("QVEuQWI4Uk42TDBSR3JIM0RKWE4wQ08xN3VGT2xyLW5yZTd6dy1RNDk2cFp1X0FLOTZOWUE="), Charsets.UTF_8)
+            String(java.util.Base64.getUrlDecoder().decode("QVEuQWI4Uk42Sk53YmNtTlcwY2tiYjlQWUhtMUJSTHdJLWF3alFGMms2bnhqVkU3cGhVMWc="), Charsets.UTF_8)
         }
         const val DEFAULT_PERSONA_PROMPT = "You are a warm, helpful native English conversation partner in a practice drill."
         const val DEFAULT_READING_PROMPT = "You are a native English speaker. Always read the provided sentence aloud clearly and naturally."

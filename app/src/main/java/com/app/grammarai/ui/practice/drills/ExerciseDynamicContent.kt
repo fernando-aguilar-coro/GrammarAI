@@ -122,6 +122,26 @@ fun ExerciseDynamicContent(
             )
         }
 
+        ExerciseType.TRANSLATE -> {
+            TranslateDrillCard(
+                exercise = exercise,
+                answerMode = state.translationAnswerMode,
+                textAnswer = state.translationTextAnswer,
+                orderedWords = state.translationOrderedWords,
+                isAnswerChecked = state.isAnswerChecked,
+                isCorrect = state.isCorrect,
+                onAnswerModeChange = { viewModel.processIntent(ExerciseUiIntent.SetTranslationAnswerMode(it)) },
+                onTextAnswerChange = { viewModel.processIntent(ExerciseUiIntent.InputTranslationAnswer(it)) },
+                onAddWord = { viewModel.processIntent(ExerciseUiIntent.AddTranslationWord(it)) },
+                onRemoveWord = { viewModel.processIntent(ExerciseUiIntent.RemoveTranslationWord(it)) },
+                onClearWords = { viewModel.processIntent(ExerciseUiIntent.ClearTranslationWords) },
+                onPlayAudio = onPlayAudio,
+                isTranslationSupported = state.isCurrentExerciseTranslatable,
+                isTranslationVisible = state.isTranslationVisible,
+                onToggleTranslation = onToggleTranslation
+            )
+        }
+
         ExerciseType.LISTENING_PASSAGE -> {
             ListeningPassageDrillCard(
                 exercise = exercise,
@@ -137,7 +157,7 @@ fun ExerciseDynamicContent(
         }
 
         else -> {
-            // Covers MULTIPLE_CHOICE, READING, LONG_READING, TRANSLATE
+            // Covers MULTIPLE_CHOICE, READING, LONG_READING
             MultipleChoiceDrillCard(
                 exercise = exercise,
                 selectedOption = state.selectedOption,

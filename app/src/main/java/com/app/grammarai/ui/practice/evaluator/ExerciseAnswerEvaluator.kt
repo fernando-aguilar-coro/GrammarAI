@@ -29,7 +29,8 @@ class ExerciseAnswerEvaluator(
             selectedOption = state.selectedOption,
             reconstructedWords = state.reconstructedWords,
             spokenTranscript = state.spokenTranscript,
-            pronunciationMatchScore = state.pronunciationMatchScore
+            pronunciationMatchScore = state.pronunciationMatchScore,
+            translationAnswer = state.translationAnswer
         )
         val accuracy = state.pronunciationMatchScore ?: if (isCorrect) 100 else 40
         prefs.recordExerciseCompleted(currentEx.category, isCorrect, accuracy)
@@ -41,8 +42,12 @@ class ExerciseAnswerEvaluator(
             category = currentEx.category,
             wasCorrect = isCorrect,
             accuracyScore = accuracy,
-            userAnswer = state.selectedOption ?: state.reconstructedWords.joinToString(" "),
-            expectedAnswer = currentEx.correctAnswer
+            userAnswer = if (currentEx.type == ExerciseType.TRANSLATE) {
+                state.translationAnswer
+            } else {
+                state.selectedOption ?: state.reconstructedWords.joinToString(" ")
+            },
+            expectedAnswer = currentEx.correctAnswer.ifBlank { currentEx.targetPhrase }
         )
         scope.launch { historyRepo.recordAttempt(attempt) }
 
@@ -81,6 +86,7 @@ class ExerciseAnswerEvaluator(
             ExerciseType.SENTENCE_RECONSTRUCTION,
             ExerciseType.SCRAMBLE_LISTENING ->
                 state.reconstructedWords.joinToString(" ").ifBlank { "(Omitido)" }
+            ExerciseType.TRANSLATE -> state.translationAnswer.ifBlank { "(Omitido)" }
             else -> state.selectedOption ?: "(Omitido)"
         }
         val expectedAnswer = when (currentEx.type) {
@@ -121,6 +127,7 @@ class ExerciseAnswerEvaluator(
             ExerciseType.SENTENCE_RECONSTRUCTION,
             ExerciseType.SCRAMBLE_LISTENING -> state.reconstructedWords.joinToString(" ")
             ExerciseType.PRONUNCIATION, ExerciseType.REPEAT_AFTER_ME, ExerciseType.INTONATION_CHALLENGE -> state.spokenTranscript.ifBlank { state.selectedOption ?: "" }
+            ExerciseType.TRANSLATE -> state.translationAnswer
             else -> state.selectedOption ?: ""
         }
 

@@ -13,6 +13,8 @@ data class SettingsUiState(
     val readingTonePrompt: String = "",
     val suggestionsPrompt: String = "",
     val isSavedSuccess: Boolean = false,
+    val hasUnsavedChanges: Boolean = false,
+    val isExitConfirmationVisible: Boolean = false,
     val isSyncing: Boolean = false,
     val isAuthenticating: Boolean = false,
     val isAuthenticated: Boolean = false,
@@ -42,6 +44,9 @@ sealed class SettingsUiIntent : UiIntent {
     object ResetPrompts : SettingsUiIntent()
     object SaveSettings : SettingsUiIntent()
     object Back : SettingsUiIntent()
+    object KeepEditing : SettingsUiIntent()
+    object DiscardAndNavigateBack : SettingsUiIntent()
+    object SaveAndNavigateBack : SettingsUiIntent()
     object SyncNow : SettingsUiIntent()
     data class SignInWithGoogle(val idToken: String) : SettingsUiIntent()
     object SignOut : SettingsUiIntent()
@@ -53,4 +58,32 @@ sealed class SettingsUiEffect : UiEffect {
     object NavigateBack : SettingsUiEffect()
     data class LanguageChanged(val newLanguage: String) : SettingsUiEffect()
     data class ShowSnackbar(val message: String) : SettingsUiEffect()
+}
+
+internal data class SettingsDraftSnapshot(
+    val apiKey: String,
+    val appLanguage: String,
+    val personaPrompt: String,
+    val readingTonePrompt: String,
+    val suggestionsPrompt: String,
+    val userName: String,
+    val lessonGoalTarget: Int,
+    val isCloudSyncEnabled: Boolean,
+    val dailyReminderEnabled: Boolean,
+    val dailyReminderTime: String
+) {
+    companion object {
+        fun from(state: SettingsUiState) = SettingsDraftSnapshot(
+            apiKey = state.apiKey,
+            appLanguage = state.appLanguage,
+            personaPrompt = state.personaPrompt,
+            readingTonePrompt = state.readingTonePrompt,
+            suggestionsPrompt = state.suggestionsPrompt,
+            userName = state.userName,
+            lessonGoalTarget = state.lessonGoalTarget,
+            isCloudSyncEnabled = state.isCloudSyncEnabled,
+            dailyReminderEnabled = state.dailyReminderEnabled,
+            dailyReminderTime = state.dailyReminderTime
+        )
+    }
 }

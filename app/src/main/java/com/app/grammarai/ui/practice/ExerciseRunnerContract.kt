@@ -26,6 +26,9 @@ data class ExerciseUiState(
     val isLoadingExercises: Boolean = true,
     val selectedOption: String? = null,
     val reconstructedWords: List<String> = emptyList(),
+    val translationAnswerMode: TranslationAnswerMode = TranslationAnswerMode.WRITE,
+    val translationTextAnswer: String = "",
+    val translationOrderedWords: List<String> = emptyList(),
     val isAnswerChecked: Boolean = false,
     val isCorrect: Boolean = false,
     val consecutiveCorrectCount: Int = 0,
@@ -91,6 +94,12 @@ data class ExerciseUiState(
     val currentExerciseTranslation: String?
         get() = currentExercise?.id?.let { exerciseTranslations[it] }
 
+    val translationAnswer: String
+        get() = when (translationAnswerMode) {
+            TranslationAnswerMode.WRITE -> translationTextAnswer
+            TranslationAnswerMode.ORDER -> translationOrderedWords.joinToString(" ")
+        }
+
     val isCurrentExerciseTranslatable: Boolean
         get() = com.app.grammarai.core.translation.OnDeviceTranslationManager.isExerciseCompatible(currentExercise)
 
@@ -117,10 +126,20 @@ data class ExerciseUiState(
         get() = if (exercises.isEmpty()) 0f else (currentExerciseIndex + 1).toFloat() / exercises.size.toFloat()
 }
 
+enum class TranslationAnswerMode {
+    WRITE,
+    ORDER
+}
+
 sealed interface ExerciseUiIntent : UiIntent {
     data class LoadLesson(val lessonId: String) : ExerciseUiIntent
     data class SelectOption(val option: String) : ExerciseUiIntent
     data class InputText(val text: String) : ExerciseUiIntent
+    data class SetTranslationAnswerMode(val mode: TranslationAnswerMode) : ExerciseUiIntent
+    data class InputTranslationAnswer(val text: String) : ExerciseUiIntent
+    data class AddTranslationWord(val word: String) : ExerciseUiIntent
+    data class RemoveTranslationWord(val index: Int) : ExerciseUiIntent
+    object ClearTranslationWords : ExerciseUiIntent
     data class TapReconstructWord(val word: String) : ExerciseUiIntent
     data class RemoveReconstructWord(val index: Int) : ExerciseUiIntent
     object ClearReconstruction : ExerciseUiIntent

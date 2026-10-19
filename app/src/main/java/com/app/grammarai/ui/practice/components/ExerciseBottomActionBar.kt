@@ -106,6 +106,7 @@ fun ExerciseBottomActionBar(
                 ExerciseType.REPEAT_AFTER_ME,
                 ExerciseType.INTONATION_CHALLENGE -> state.spokenTranscript.isNotBlank() || state.selectedOption != null
                 ExerciseType.SELECT_PAIRS -> exercise.pairs.isNotEmpty() && state.matchedPairs.size == exercise.pairs.size
+                ExerciseType.TRANSLATE -> state.translationAnswer.isNotBlank()
                 else -> !state.selectedOption.isNullOrBlank()
             }
 

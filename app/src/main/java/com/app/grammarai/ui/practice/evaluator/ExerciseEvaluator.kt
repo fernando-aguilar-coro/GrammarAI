@@ -2,6 +2,7 @@ package com.app.grammarai.ui.practice.evaluator
 
 import com.app.grammarai.data.model.ExerciseType
 import com.app.grammarai.data.model.GeneratedExercise
+import com.app.grammarai.ui.practice.TranslationAnswerMode
 
 object ExerciseEvaluator {
 
@@ -14,7 +15,8 @@ object ExerciseEvaluator {
         selectedOption: String?,
         reconstructedWords: List<String>,
         spokenTranscript: String = "",
-        pronunciationMatchScore: Int? = null
+        pronunciationMatchScore: Int? = null,
+        translationAnswer: String = ""
     ): Boolean {
         return when (exercise.type) {
             ExerciseType.SCRAMBLED_SENTENCE,
@@ -49,6 +51,10 @@ object ExerciseEvaluator {
             ExerciseType.THEORY,
             ExerciseType.FLASHCARDS,
             ExerciseType.FLASHCARD -> true
+            ExerciseType.TRANSLATE -> {
+                translationAnswer.isNotBlank() &&
+                    normalize(translationAnswer) == normalize(exercise.correctAnswer.ifBlank { exercise.targetPhrase })
+            }
             else -> {
                 if (selectedOption == null) false
                 else normalize(selectedOption) == normalize(exercise.correctAnswer)

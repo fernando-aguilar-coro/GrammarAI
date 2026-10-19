@@ -138,24 +138,14 @@ class CurriculumRepository(
                         .thenBy { it.module }
                 )
 
-                val maxCompletedIndex = sorted.indexOfLast { completed.contains(it.id) }
-                val effectiveFrontier = maxOf(
-                    preferencesManager?.highestUnlockedIndex ?: 2,
-                    if (maxCompletedIndex >= 0) maxCompletedIndex + 1 else 2
-                )
-                preferencesManager?.advanceUnlockFrontier(effectiveFrontier)
+                val firstAvailableIndex = firstIncompleteLessonIndex(sorted, completed)
 
                 val updated = sorted.mapIndexed { index, lesson ->
                     val baseExercises = if (lesson.exercises.isNotEmpty()) sanitizeExercises(lesson.exercises, lesson.type) else sanitizeExercises(getMockExercises(lesson.id), lesson.type)
                     val exercises = injectConversations(lesson, baseExercises)
                     val isCompleted = completed.contains(lesson.id)
                     val lessonScore = scores[lesson.id] ?: if (isCompleted) 100 else lesson.score
-                    // El frontier es inclusivo: un valor N deja disponibles los índices 0 hasta N.
-                    val status = when {
-                        isCompleted -> LessonStatus.MASTERED
-                        index <= effectiveFrontier -> LessonStatus.READY
-                        else -> LessonStatus.LOCKED
-                    }
+                    val status = resolveLessonStatus(index, isCompleted, firstAvailableIndex)
                     lesson.copy(
                         exercises = exercises,
                         status = status,
@@ -232,16 +222,8 @@ class CurriculumRepository(
             )
             val lessonIndex = sorted.indexOfFirst { it.id == id }
             val completed = preferencesManager?.completedLessons ?: emptySet()
-            val maxCompletedIndex = sorted.indexOfLast { completed.contains(it.id) }
-            val effectiveFrontier = maxOf(
-                preferencesManager?.highestUnlockedIndex ?: 2,
-                if (maxCompletedIndex >= 0) maxCompletedIndex + 1 else 2
-            )
-            val resolvedStatus = when {
-                isCompleted -> LessonStatus.MASTERED
-                lessonIndex in 0..effectiveFrontier -> LessonStatus.READY
-                else -> LessonStatus.LOCKED
-            }
+            val firstAvailableIndex = firstIncompleteLessonIndex(sorted, completed)
+            val resolvedStatus = resolveLessonStatus(lessonIndex, isCompleted, firstAvailableIndex)
             return@withContext cached.copy(
                 exercises = injectConversations(cached, base),
                 status = resolvedStatus,
@@ -283,16 +265,8 @@ class CurriculumRepository(
             )
             val lessonIndex = sorted.indexOfFirst { it.id == id }
             val completed = preferencesManager?.completedLessons ?: emptySet()
-            val maxCompletedIndex = sorted.indexOfLast { completed.contains(it.id) }
-            val effectiveFrontier = maxOf(
-                preferencesManager?.highestUnlockedIndex ?: 2,
-                if (maxCompletedIndex >= 0) maxCompletedIndex + 1 else 2
-            )
-            val resolvedStatus = when {
-                isCompleted -> LessonStatus.MASTERED
-                lessonIndex in 0..effectiveFrontier -> LessonStatus.READY
-                else -> LessonStatus.LOCKED
-            }
+            val firstAvailableIndex = firstIncompleteLessonIndex(sorted, completed)
+            val resolvedStatus = resolveLessonStatus(lessonIndex, isCompleted, firstAvailableIndex)
             return cached.copy(
                 exercises = injectConversations(cached, base),
                 status = resolvedStatus,
@@ -317,22 +291,13 @@ class CurriculumRepository(
                 .thenBy { it.module }
         )
 
-        val maxCompletedIndex = sorted.indexOfLast { completed.contains(it.id) }
-        val effectiveFrontier = maxOf(
-            preferencesManager?.highestUnlockedIndex ?: 2,
-            if (maxCompletedIndex >= 0) maxCompletedIndex + 1 else 2
-        )
-        preferencesManager?.advanceUnlockFrontier(effectiveFrontier)
+        val firstAvailableIndex = firstIncompleteLessonIndex(sorted, completed)
 
         // Reaplica el progreso y el frontier a la lista recibida, que puede venir con estados obsoletos.
         val resolved = sorted.mapIndexed { index, lesson ->
             val isCompleted = completed.contains(lesson.id)
             val lessonScore = scores[lesson.id] ?: if (isCompleted) 100 else lesson.score
-            val status = when {
-                isCompleted -> LessonStatus.MASTERED
-                index <= effectiveFrontier -> LessonStatus.READY
-                else -> LessonStatus.LOCKED
-            }
+            val status = resolveLessonStatus(index, isCompleted, firstAvailableIndex)
             lesson.copy(status = status, score = lessonScore)
         }
 
@@ -353,7 +318,7 @@ class CurriculumRepository(
 
     fun markLessonCompleted(id: String, score: Int = 100) {
         val scorePercent = score.coerceIn(0, 100)
-        preferencesManager?.recordLessonCompleted(id, scorePercent)
+        val prefs = preferencesManager
         val sorted = (_lessons.value.ifEmpty {
             val fileName = getCurriculumFileName()
             parsedCache[fileName] ?: emptyList()
@@ -363,10 +328,38 @@ class CurriculumRepository(
         )
         val currentIndex = sorted.indexOfFirst { it.id == id }
         if (currentIndex >= 0) {
-            // Completar una lección abre al menos la siguiente posición del currículo.
-            preferencesManager?.advanceUnlockFrontier(currentIndex + 1)
+            val completedBefore = prefs?.completedLessons ?: emptySet()
+            val implicitlyCompletedIds = sorted
+                .take(currentIndex)
+                .map { it.id }
+                .filterNot { completedBefore.contains(it) }
+            if (prefs != null && implicitlyCompletedIds.isNotEmpty()) {
+                prefs.completedLessons = completedBefore + implicitlyCompletedIds
+                prefs.lessonScores = prefs.lessonScores.toMutableMap().apply {
+                    implicitlyCompletedIds.forEach { put(it, 100) }
+                }
+            }
+            prefs?.advanceUnlockFrontier(currentIndex + AVAILABLE_LESSONS_COUNT)
+        }
+        if (prefs != null) {
+            if (prefs.completedLessons.contains(id)) {
+                prefs.lessonScores = prefs.lessonScores + (id to scorePercent)
+            } else {
+                prefs.recordLessonCompleted(id, scorePercent)
+            }
         }
         _lessons.value = resolveLessonStatuses(sorted)
+    }
+
+    private fun firstIncompleteLessonIndex(lessons: List<Lesson>, completed: Set<String>): Int {
+        val index = lessons.indexOfFirst { it.id !in completed }
+        return if (index >= 0) index else lessons.size
+    }
+
+    private fun resolveLessonStatus(index: Int, isCompleted: Boolean, firstAvailableIndex: Int): LessonStatus = when {
+        isCompleted -> LessonStatus.MASTERED
+        index >= firstAvailableIndex && index < firstAvailableIndex + AVAILABLE_LESSONS_COUNT -> LessonStatus.READY
+        else -> LessonStatus.LOCKED
     }
 
     fun unmarkLessonCompleted(id: String) {
@@ -391,6 +384,8 @@ class CurriculumRepository(
     }
 
     companion object {
+        private const val AVAILABLE_LESSONS_COUNT = 3
+
         fun getMockExercises(lessonId: String): List<GeneratedExercise> {
             return MockCurriculumData.getMockExercises(lessonId)
         }

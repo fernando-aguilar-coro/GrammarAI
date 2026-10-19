@@ -109,6 +109,23 @@ class ExerciseRunnerViewModel(
             is ExerciseUiIntent.InputText -> {
                 handleInputText(intent.text)
             }
+            is ExerciseUiIntent.SetTranslationAnswerMode -> if (!state.value.isAnswerChecked) {
+                updateState { it.copy(translationAnswerMode = intent.mode) }
+            }
+            is ExerciseUiIntent.InputTranslationAnswer -> if (!state.value.isAnswerChecked) {
+                updateState { it.copy(translationTextAnswer = intent.text) }
+            }
+            is ExerciseUiIntent.AddTranslationWord -> addTranslationWord(intent.word)
+            is ExerciseUiIntent.RemoveTranslationWord -> if (!state.value.isAnswerChecked) {
+                val words = state.value.translationOrderedWords.toMutableList()
+                if (intent.index in words.indices) {
+                    words.removeAt(intent.index)
+                    updateState { it.copy(translationOrderedWords = words) }
+                }
+            }
+            is ExerciseUiIntent.ClearTranslationWords -> if (!state.value.isAnswerChecked) {
+                updateState { it.copy(translationOrderedWords = emptyList()) }
+            }
             is ExerciseUiIntent.TapReconstructWord -> if (!state.value.isAnswerChecked) {
                 updateState { it.copy(reconstructedWords = it.reconstructedWords + intent.word) }
                 audioCoordinator.playWordAudio(intent.word)
@@ -229,6 +246,22 @@ class ExerciseRunnerViewModel(
         updateState { it.copy(selectedOption = text) }
     }
 
+    private fun addTranslationWord(word: String) {
+        if (state.value.isAnswerChecked) return
+        val exercise = state.value.currentExercise ?: return
+        if (exercise.type != ExerciseType.TRANSLATE) return
+        val availableCount = translationAnswerTokens(exercise).count { it == word }
+        val selectedCount = state.value.translationOrderedWords.count { it == word }
+        if (selectedCount >= availableCount) return
+        updateState { it.copy(translationOrderedWords = it.translationOrderedWords + word) }
+        audioCoordinator.playWordAudio(word)
+    }
+
+    private fun translationAnswerTokens(exercise: com.app.grammarai.data.model.GeneratedExercise): List<String> {
+        val answer = exercise.correctAnswer.ifBlank { exercise.targetPhrase }
+        return answer.trim().split(Regex("\\s+")).filter { it.isNotBlank() }
+    }
+
     private fun handleSpokenResult(transcript: String) {
         if (transcript.isBlank()) return
         val currentEx = state.value.currentExercise ?: return
@@ -261,6 +294,9 @@ class ExerciseRunnerViewModel(
                     exerciseResults = emptyMap(),
                     selectedOption = null,
                     reconstructedWords = emptyList(),
+                    translationAnswerMode = TranslationAnswerMode.WRITE,
+                    translationTextAnswer = "",
+                    translationOrderedWords = emptyList(),
                     spokenTranscript = "",
                     pronunciationMatchScore = null,
                     isAnswerChecked = false,
@@ -292,6 +328,9 @@ class ExerciseRunnerViewModel(
                     exerciseResults = emptyMap(),
                     selectedOption = null,
                     reconstructedWords = emptyList(),
+                    translationAnswerMode = TranslationAnswerMode.WRITE,
+                    translationTextAnswer = "",
+                    translationOrderedWords = emptyList(),
                     spokenTranscript = "",
                     pronunciationMatchScore = null,
                     isAnswerChecked = false,

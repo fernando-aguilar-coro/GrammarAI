@@ -18,6 +18,7 @@ class SettingsViewModel(
 ) : MviViewModel<SettingsUiState, SettingsUiIntent, SettingsUiEffect>(
     SettingsUiState()
 ) {
+    private var savedDraft = SettingsDraftSnapshot.from(SettingsUiState())
 
     init {
         updateState {
@@ -39,70 +40,70 @@ class SettingsViewModel(
                 dailyReminderTime = prefs.dailyReminderTime
             )
         }
+        savedDraft = SettingsDraftSnapshot.from(state.value)
     }
 
     override fun processIntent(intent: SettingsUiIntent) {
         when (intent) {
-            is SettingsUiIntent.UpdateUserName -> updateState {
+            is SettingsUiIntent.UpdateUserName -> updateDraft {
                 it.copy(userName = intent.name, isSavedSuccess = false)
             }
-            is SettingsUiIntent.UpdateLessonGoalTarget -> updateState {
+            is SettingsUiIntent.UpdateLessonGoalTarget -> updateDraft {
                 it.copy(lessonGoalTarget = intent.target, isSavedSuccess = false)
             }
-            is SettingsUiIntent.UpdateApiKey -> updateState {
+            is SettingsUiIntent.UpdateApiKey -> updateDraft {
                 it.copy(apiKey = intent.key, keyValidationStatus = null, isSavedSuccess = false)
             }
             is SettingsUiIntent.TestApiKey -> testApiKey()
-            is SettingsUiIntent.SelectLanguage -> {
-                val prev = prefs.appLanguage
-                prefs.appLanguage = intent.language
-                prefs.nativeLanguage = if (intent.language.equals("en", ignoreCase = true)) "English" else "Spanish"
-                curriculumRepository.reloadCurriculum()
-                updateState {
-                    it.copy(appLanguage = intent.language, isSavedSuccess = false)
-                }
-                if (prev != intent.language) {
-                    sendEffect(SettingsUiEffect.LanguageChanged(intent.language))
-                }
+            is SettingsUiIntent.SelectLanguage -> updateDraft {
+                it.copy(appLanguage = intent.language, isSavedSuccess = false)
             }
-            is SettingsUiIntent.UpdatePersonaPrompt -> updateState {
+            is SettingsUiIntent.UpdatePersonaPrompt -> updateDraft {
                 it.copy(personaPrompt = intent.prompt, isSavedSuccess = false)
             }
-            is SettingsUiIntent.UpdateReadingTonePrompt -> updateState {
+            is SettingsUiIntent.UpdateReadingTonePrompt -> updateDraft {
                 it.copy(readingTonePrompt = intent.prompt, isSavedSuccess = false)
             }
-            is SettingsUiIntent.UpdateSuggestionsPrompt -> updateState {
+            is SettingsUiIntent.UpdateSuggestionsPrompt -> updateDraft {
                 it.copy(suggestionsPrompt = intent.prompt, isSavedSuccess = false)
             }
             is SettingsUiIntent.ResetPrompts -> resetPrompts()
             is SettingsUiIntent.SaveSettings -> saveSettings()
-            is SettingsUiIntent.Back -> sendEffect(SettingsUiEffect.NavigateBack)
+            is SettingsUiIntent.Back -> requestNavigateBack()
+            is SettingsUiIntent.KeepEditing -> updateState { it.copy(isExitConfirmationVisible = false) }
+            is SettingsUiIntent.DiscardAndNavigateBack -> sendEffect(SettingsUiEffect.NavigateBack)
+            is SettingsUiIntent.SaveAndNavigateBack -> {
+                saveSettings()
+                sendEffect(SettingsUiEffect.NavigateBack)
+            }
             is SettingsUiIntent.SignInWithGoogle -> signInWithGoogle(intent.idToken)
             is SettingsUiIntent.SignOut -> signOut()
             is SettingsUiIntent.SyncNow -> performSync()
             is SettingsUiIntent.RestoreFromCloud -> restoreFromCloud(intent.accountIdentifier)
             is SettingsUiIntent.ToggleCloudSync -> {
-                prefs.isCloudSyncEnabled = intent.enabled
-                updateState { it.copy(isCloudSyncEnabled = intent.enabled) }
+                updateDraft { it.copy(isCloudSyncEnabled = intent.enabled, isSavedSuccess = false) }
             }
             is SettingsUiIntent.ToggleDailyReminder -> {
-                prefs.dailyReminderEnabled = intent.enabled
-                updateState { it.copy(dailyReminderEnabled = intent.enabled, isSavedSuccess = false) }
-                val (hour, minute) = DailyReminderManager.parseReminderTime(state.value.dailyReminderTime)
-                if (intent.enabled) {
-                    DailyReminderManager.scheduleDailyReminder(GrammarApplication.instance, hour, minute)
-                } else {
-                    DailyReminderManager.cancelDailyReminder(GrammarApplication.instance)
-                }
+                updateDraft { it.copy(dailyReminderEnabled = intent.enabled, isSavedSuccess = false) }
             }
             is SettingsUiIntent.UpdateDailyReminderTime -> {
-                prefs.dailyReminderTime = intent.time
-                updateState { it.copy(dailyReminderTime = intent.time, isSavedSuccess = false) }
-                if (state.value.dailyReminderEnabled) {
-                    val (hour, minute) = DailyReminderManager.parseReminderTime(intent.time)
-                    DailyReminderManager.scheduleDailyReminder(GrammarApplication.instance, hour, minute)
-                }
+                updateDraft { it.copy(dailyReminderTime = intent.time, isSavedSuccess = false) }
             }
+        }
+    }
+
+    private fun updateDraft(transform: (SettingsUiState) -> SettingsUiState) {
+        updateState { current ->
+            val updated = transform(current)
+            updated.copy(hasUnsavedChanges = SettingsDraftSnapshot.from(updated) != savedDraft)
+        }
+    }
+
+    private fun requestNavigateBack() {
+        if (state.value.hasUnsavedChanges) {
+            updateState { it.copy(isExitConfirmationVisible = true) }
+        } else {
+            sendEffect(SettingsUiEffect.NavigateBack)
         }
     }
 
@@ -162,7 +163,7 @@ class SettingsViewModel(
     }
 
     private fun resetPrompts() {
-        updateState {
+        updateDraft {
             it.copy(
                 personaPrompt = PreferencesManager.DEFAULT_PERSONA_PROMPT,
                 readingTonePrompt = PreferencesManager.DEFAULT_READING_PROMPT,
@@ -176,17 +177,38 @@ class SettingsViewModel(
         val s = state.value
         val previousLang = prefs.appLanguage
         val newName = s.userName.trim().ifBlank { "neko" }
+        val savedState = s.copy(
+            userName = newName,
+            apiKey = s.apiKey.trim(),
+            personaPrompt = s.personaPrompt.trim(),
+            readingTonePrompt = s.readingTonePrompt.trim(),
+            suggestionsPrompt = s.suggestionsPrompt.trim()
+        )
         prefs.userName = newName
-        prefs.apiKey = s.apiKey.trim()
+        prefs.apiKey = savedState.apiKey
         prefs.appLanguage = s.appLanguage
         prefs.nativeLanguage = if (s.appLanguage.equals("en", ignoreCase = true)) "English" else "Spanish"
-        prefs.aiPersonaPrompt = s.personaPrompt.trim()
-        prefs.aiReadingTonePrompt = s.readingTonePrompt.trim()
-        prefs.aiSuggestionsPrompt = s.suggestionsPrompt.trim()
+        prefs.aiPersonaPrompt = savedState.personaPrompt
+        prefs.aiReadingTonePrompt = savedState.readingTonePrompt
+        prefs.aiSuggestionsPrompt = savedState.suggestionsPrompt
         prefs.lessonGoalTarget = s.lessonGoalTarget
+        prefs.isCloudSyncEnabled = s.isCloudSyncEnabled
         prefs.dailyReminderEnabled = s.dailyReminderEnabled
         prefs.dailyReminderTime = s.dailyReminderTime
-        updateState { it.copy(userName = newName, isSavedSuccess = true) }
+        val (hour, minute) = DailyReminderManager.parseReminderTime(s.dailyReminderTime)
+        if (s.dailyReminderEnabled) {
+            DailyReminderManager.scheduleDailyReminder(GrammarApplication.instance, hour, minute)
+        } else {
+            DailyReminderManager.cancelDailyReminder(GrammarApplication.instance)
+        }
+        savedDraft = SettingsDraftSnapshot.from(savedState)
+        updateState {
+            savedState.copy(
+                isSavedSuccess = true,
+                hasUnsavedChanges = false,
+                isExitConfirmationVisible = false
+            )
+        }
 
         if (prefs.isAuthenticated && prefs.isCloudSyncEnabled) {
             viewModelScope.launch {
