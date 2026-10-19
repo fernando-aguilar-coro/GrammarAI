@@ -34,7 +34,7 @@ class GeminiEvaluationHelper(
         val langRule = if (isEnglishOnly) {
             "in English"
         } else {
-            "in bilingual EN/ES (English with Spanish explanation/support)"
+            "en español"
         }
 
         val prompt = """

@@ -9,45 +9,6 @@
     "durationMinutes": 5,
     "exercises": [
       {
-        "id": "ex_pre_a1_01_pairs_vowels",
-        "type": "select_pairs",
-        "category": "LEXICON",
-        "prompt": "Empareja las 5 vocales en inglés con su sonido fonético fundamental.",
-        "options": [],
-        "scrambledWords": [],
-        "correctAnswer": "[{\"left\": \"A\", \"right\": \"/eɪ/ (ei)\"}, {\"left\": \"E\", \"right\": \"/iː/ (i)\"}, {\"left\": \"I\", \"right\": \"/aɪ/ (ai)\"}, {\"left\": \"O\", \"right\": \"/oʊ/ (ou)\"}, {\"left\": \"U\", \"right\": \"/juː/ (iu)\"}]",
-        "explanation": "Las 5 vocales en inglés: A (/ei/), E (/i/), I (/ai/), O (/ou/), U (/iu/).",
-        "expectedPattern": "",
-        "readingPassage": "",
-        "dialogueContext": "",
-        "audioBase64": "",
-        "targetPhrase": "",
-        "phonetics": "",
-        "pairs": [
-          {
-            "left": "A",
-            "right": "/eɪ/ (ei)"
-          },
-          {
-            "left": "E",
-            "right": "/iː/ (i)"
-          },
-          {
-            "left": "I",
-            "right": "/aɪ/ (ai)"
-          },
-          {
-            "left": "O",
-            "right": "/oʊ/ (ou)"
-          },
-          {
-            "left": "U",
-            "right": "/juː/ (iu)"
-          }
-        ],
-        "flashcards": []
-      },
-      {
         "id": "ex_pre_a1_01_pairs_cons1",
         "type": "select_pairs",
         "category": "LEXICON",
@@ -213,7 +174,7 @@
     "status": "READY",
     "score": 0,
     "youtubeId": null,
-    "theoryMarkdown": "## El Abecedario en Inglés: Fundamentos y Vocales\n\nLas vocales en inglés cambian radicalmente respecto al español. Dominarlas es la clave para entender cualquier deletreo.\n\n### Vocales y Consonantes Frecuentes\n| Letra | Fonética | Suena como | Ejemplo |\n| A | /eɪ/ | (ei) | Apple |\n| E | /iː/ | (i) | Email |\n| I | /aɪ/ | (ai) | Ice cream |\n| O | /oʊ/ | (ou) | Open |\n| U | /juː/ | (iu) | Music |\n| B | /biː/ | (bi) | Book |\n| D | /diː/ | (di) | Desk |\n| F | /ef/ | (ef) | Fast |\n| K | /keɪ/ | (kei) | Kite |\n| L | /el/ | (el) | Lion |\n| M | /em/ | (em) | Moon |\n| P | /piː/ | (pi) | Pen |\n| S | /es/ | (es) | Sun |\n| T | /tiː/ | (ti) | Tea |"
+    "theoryMarkdown": "## El alfabeto: vocales y letras frecuentes\n\nEn inglés, una letra tiene un **nombre** cuando la decimos por separado. En una palabra, esa misma letra puede representar otros sonidos. Por ejemplo, el nombre de **A** es /eɪ/, pero en *apple* suena diferente.\n\n### Las vocales por su nombre\n\n| Letra | Nombre en inglés | Ejemplo al deletrear |\n|---|---|---|\n| A | /eɪ/ | *A* |\n| E | /iː/ | *E* |\n| I | /aɪ/ | *I* |\n| O | /oʊ/ | *O* |\n| U | /juː/ | *U* |\n\nEstos son los nombres de las letras, no una regla para pronunciar todas las palabras que las contienen.\n\n### Algunas consonantes\n\n| Letra | Nombre en inglés | Letra | Nombre en inglés |\n|---|---|---|---|\n| B | /biː/ | K | /keɪ/ |\n| D | /diː/ | L | /el/ |\n| F | /ef/ | M | /em/ |\n| P | /piː/ | S | /es/ |\n| T | /tiː/ |  |  |\n\n### Deletrea letra por letra\n\nPara deletrear, di el **nombre** de cada letra:\n\n- **TV** → T – V\n- **Sam** → S – A – M\n\n**Consejo:** escucha el nombre completo de cada letra; no lo reemplaces por cómo suena una palabra en español."
   },
   {
     "id": "pre_a1_el_abecedario_parte_2_002",
@@ -398,7 +359,7 @@
     "status": "READY",
     "score": 0,
     "youtubeId": null,
-    "theoryMarkdown": "## Letras Tramposas y Deletreo Avanzado\n\nCiertas letras causan confusión frecuente en hispanohablantes. Presta atención a **G** vs **J**, y a letras únicas como **H** y **W**.\n\n### Tabla de Letras Desafiantes\n| Letra | Fonética | Ojo con esto | Ejemplo |\n| G | /dʒiː/ | (dji) - No confundir con J | Guitar |\n| J | /dʒeɪ/ | (djei) - Suena a 'yei' fuerte | Juice |\n| H | /eɪtʃ/ | (eich) - ¡No suena como hache! | House |\n| R | /ɑːr/ | (ar) - Sonido suave de garganta | Red |\n| V | /viː/ | (vi) - Labiodental, vibra con los dientes | Van |\n| W | /ˈdʌbəl.juː/ | (dábliu) - Doble U | Water |\n| X | /eks/ | (ex) | Box |\n| Y | /waɪ/ | (uai) | Yes |\n| Z | /ziː/ | (zi) - Zumbido como abeja | Zebra |"
+    "theoryMarkdown": "## Letras que suelen confundirse\n\nAl deletrear en inglés, algunas letras pueden parecerse al oído. Escúchalas con atención y practica diciendo sus nombres por separado.\n\n| Letra | Nombre en inglés | Pista para recordarla |\n|---|---|---|\n| G | /dʒiː/ | Termina como el nombre de la letra **E**. |\n| J | /dʒeɪ/ | Termina como el nombre de la letra **A**. |\n| H | /eɪtʃ/ | Empieza como el nombre de la letra **A**. |\n| R | /ɑːr/ | En inglés estadounidense suele terminar con una **r** audible. |\n| V | /viː/ | No la confundas con **B**: escucha el sonido inicial. |\n| W | /ˈdʌbəl juː/ | Su nombre significa “doble u”. |\n| X | /eks/ | Su nombre tiene dos sonidos: /e/ y /ks/. |\n| Y | /waɪ/ | No se pronuncia como la “i griega” en español. |\n| Z | /ziː/ | En inglés británico también se dice /zed/. |\n\n### Practica el deletreo\n\nDi cada nombre letra por letra, en orden:\n\n- **VIP** → V – I – P\n- **FBI** → F – B – I\n- **Morgan** → M – O – R – G – A – N\n\n**Recuerda:** esta lección practica los nombres de las letras. La pronunciación de una letra puede cambiar cuando aparece dentro de una palabra."
   },
   {
     "id": "pre_a1_los_numeros_del_1_al_20_003",
