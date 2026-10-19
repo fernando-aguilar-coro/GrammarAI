@@ -269,8 +269,7 @@
     <string name="drill_ai_override_celebration">¡La IA validó tu respuesta como correcta! Puntos otorgados.</string>
     <string name="drill_ai_dialog_title_valid">Respuesta Aceptada por la IA</string>
     <string name="drill_ai_dialog_title_incorrect">Análisis de la IA</string>
-    <string name="drill_ai_dialog_specific_title">Análisis Específico</string>
-    <string name="drill_ai_dialog_general_title">Desglose Paso a Paso</string>
+    <string name="drill_ai_dialog_correction_title">Corrección de IA</string>
     <string name="drill_ai_dialog_close">Entendido</string>
 
     <!-- Lesson TopBar & On-Demand Audio Status -->

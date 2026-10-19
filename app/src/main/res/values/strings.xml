@@ -269,8 +269,7 @@
     <string name="drill_ai_override_celebration">AI evaluated your answer as valid! Points awarded.</string>
     <string name="drill_ai_dialog_title_valid">Answer Accepted by AI</string>
     <string name="drill_ai_dialog_title_incorrect">AI Pedagogical Analysis</string>
-    <string name="drill_ai_dialog_specific_title">Specific Analysis</string>
-    <string name="drill_ai_dialog_general_title">Step-by-step Breakdown</string>
+    <string name="drill_ai_dialog_correction_title">AI Correction</string>
     <string name="drill_ai_dialog_close">Got it</string>
 
     <!-- Lesson TopBar & On-Demand Audio Status -->

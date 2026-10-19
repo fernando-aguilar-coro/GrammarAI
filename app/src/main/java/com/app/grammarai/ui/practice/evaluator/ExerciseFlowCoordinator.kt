@@ -30,7 +30,7 @@ class ExerciseFlowCoordinator(
                     currentExerciseIndex = nextIndex,
                     selectedOption = null,
                     reconstructedWords = emptyList(),
-                    translationAnswerMode = com.app.grammarai.ui.practice.TranslationAnswerMode.WRITE,
+                    translationAnswerMode = com.app.grammarai.ui.practice.TranslationAnswerMode.ORDER,
                     translationTextAnswer = "",
                     translationOrderedWords = emptyList(),
                     isAnswerChecked = false,

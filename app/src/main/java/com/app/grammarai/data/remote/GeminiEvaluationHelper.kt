@@ -77,8 +77,7 @@ class GeminiEvaluationHelper(
         if (key.isBlank()) {
             return@withContext AiEvaluationResult(
                 isCorrect = false,
-                specificExplanation = exercise.explanation.ifBlank { "Offline mode: No AI explanation available." },
-                generalExplanation = exercise.correctAnswer
+                explanation = exercise.explanation.ifBlank { "Offline mode: No AI explanation available." }
             )
         }
 
@@ -87,15 +86,10 @@ class GeminiEvaluationHelper(
 
         val isEnglishOnly = targetLanguage.equals("en", ignoreCase = true) ||
                             targetLanguage.equals("english", ignoreCase = true)
-        val explanationLangInstruction = if (isEnglishOnly) {
-            "In clear, natural English, explain"
+        val languageInstruction = if (isEnglishOnly) {
+            "Write the correction only in clear, natural English."
         } else {
-            "In bilingual format (English explanation accompanied by clear Spanish translation and grammar guidance / EN-ES), explain"
-        }
-        val breakdownLangInstruction = if (isEnglishOnly) {
-            "In English, provide a clear breakdown of the target phrase, explaining key grammar points, word meanings, and structural nuances."
-        } else {
-            "In bilingual format (EN-ES), provide a Spanish translation of the target phrase and explain key grammar points, word meanings, and structural nuances."
+            "Write one brief correction first in English, then give its concise Spanish translation. Do not add any other explanation."
         }
 
         val prompt = """
@@ -111,16 +105,14 @@ class GeminiEvaluationHelper(
             1. Pedagogical & Semantic evaluation: Evaluate if the student's answer is acceptable, grammatically correct, and natural in English for this exercise.
                - IMPORTANT: If the student's answer is a valid synonym, contraction, alternate valid word order, or natural equivalent that conveys the correct meaning, MARK IT AS VALID ("isCorrect": true), even if it differs from the exact expected standard answer.
                - If it has actual grammatical errors, wrong vocabulary, or misses the core question, MARK IT AS INVALID ("isCorrect": false).
-            2. Specific explanation ("specificExplanation"):
-               - $explanationLangInstruction clearly and concisely what the student got wrong, OR if marked correct, why their alternate phrasing is valid and natural.
-            3. General breakdown ("generalExplanation"):
-               - $breakdownLangInstruction
+            2. Correction ("explanation"):
+               - $languageInstruction
+               - Be direct and concise: identify the mistake and give the correct form with at most one short grammar reason. If the answer is correct, briefly confirm why. No step-by-step breakdown, repeated answer, or extra details.
 
             Return strictly a JSON object with this exact schema (no markdown fences, just pure JSON):
             {
               "isCorrect": boolean,
-              "specificExplanation": "string",
-              "generalExplanation": "string"
+              "explanation": "string"
             }
         """.trimIndent()
 
@@ -138,16 +130,14 @@ class GeminiEvaluationHelper(
                 } else {
                     AiEvaluationResult(
                         isCorrect = false,
-                        specificExplanation = exercise.explanation.ifBlank { "Could not retrieve AI analysis." },
-                        generalExplanation = exercise.correctAnswer
+                        explanation = exercise.explanation.ifBlank { "Could not retrieve AI analysis." }
                     )
                 }
             }
         } catch (e: Exception) {
             AiEvaluationResult(
                 isCorrect = false,
-                specificExplanation = exercise.explanation.ifBlank { "Could not connect to AI service." },
-                generalExplanation = exercise.correctAnswer
+                explanation = exercise.explanation.ifBlank { "Could not connect to AI service." }
             )
         }
     }
@@ -161,27 +151,21 @@ class GeminiEvaluationHelper(
                 .trim()
             val element = jsonSerializer.parseToJsonElement(cleaned).jsonObject
             val isCorrect = element["isCorrect"]?.jsonPrimitive?.booleanOrNull ?: false
-            val specific = element["specificExplanation"]?.jsonPrimitive?.content ?: exercise.explanation
-            val general = element["generalExplanation"]?.jsonPrimitive?.content ?: exercise.correctAnswer
+            val explanation = element["explanation"]?.jsonPrimitive?.content ?: exercise.explanation
             AiEvaluationResult(
                 isCorrect = isCorrect,
-                specificExplanation = specific,
-                generalExplanation = general
+                explanation = explanation
             )
         } catch (e: Exception) {
             val isCorrectMatch = Regex(""""isCorrect"\s*:\s*(true|false)""").find(extractedText)
             val isCorrect = isCorrectMatch?.groupValues?.get(1)?.toBoolean() ?: false
-            val specificMatch = Regex(""""specificExplanation"\s*:\s*"((?:\\.|[^"\\])*)"""").find(extractedText)
-            val specific = specificMatch?.groupValues?.get(1)?.replace("\\n", "\n")?.replace("\\\"", "\"")
+            val explanationMatch = Regex(""""explanation"\s*:\s*"((?:\\.|[^"\\])*)"""").find(extractedText)
+            val explanation = explanationMatch?.groupValues?.get(1)?.replace("\\n", "\n")?.replace("\\\"", "\"")
                 ?: exercise.explanation.ifBlank { extractedText }
-            val generalMatch = Regex(""""generalExplanation"\s*:\s*"((?:\\.|[^"\\])*)"""").find(extractedText)
-            val general = generalMatch?.groupValues?.get(1)?.replace("\\n", "\n")?.replace("\\\"", "\"")
-                ?: exercise.correctAnswer
 
             AiEvaluationResult(
                 isCorrect = isCorrect,
-                specificExplanation = specific,
-                generalExplanation = general
+                explanation = explanation
             )
         }
     }

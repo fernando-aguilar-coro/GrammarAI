@@ -164,7 +164,7 @@ class ExerciseAnswerEvaluator(
                     score = if (shouldOverride) current.score + 10 else current.score,
                     exerciseResults = if (shouldOverride) current.exerciseResults + (currentEx.id to true) else current.exerciseResults,
                     aiEvaluationResult = result,
-                    aiExplanation = result.specificExplanation,
+                    aiExplanation = result.explanation,
                     showAiExplanationDialog = true
                 )
             }

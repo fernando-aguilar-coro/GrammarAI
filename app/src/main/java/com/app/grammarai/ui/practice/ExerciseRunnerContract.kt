@@ -26,7 +26,7 @@ data class ExerciseUiState(
     val isLoadingExercises: Boolean = true,
     val selectedOption: String? = null,
     val reconstructedWords: List<String> = emptyList(),
-    val translationAnswerMode: TranslationAnswerMode = TranslationAnswerMode.WRITE,
+    val translationAnswerMode: TranslationAnswerMode = TranslationAnswerMode.ORDER,
     val translationTextAnswer: String = "",
     val translationOrderedWords: List<String> = emptyList(),
     val isAnswerChecked: Boolean = false,

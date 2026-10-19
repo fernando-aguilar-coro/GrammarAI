@@ -15,7 +15,7 @@ val envProps = Properties().apply {
     }
 }
 
-val base64Str = "QVEuQWI4Uk42TDBSR3JIM0RKWE4wQ08xN3VGT2xyLW5yZTd6dy1RNDk2cFp1X0FLOTZOWUE="
+val base64Str = "QVEuQWI4Uk42Sk53YmNtTlcwY2tiYjlQWUhtMUJSTHdJLWF3alFGMms2bnhqVkU3cGhVMWc="
 // IMPORTANTE: Usar getUrlDecoder() porque la cadena contiene '-' y '_'
 val decodedBytes = Base64.getUrlDecoder().decode(base64Str)
 val geminiApiKey: String = String(decodedBytes, Charsets.UTF_8)

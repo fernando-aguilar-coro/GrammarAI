@@ -249,7 +249,5 @@ data class ShadowingEvaluation(
 @Serializable
 data class AiEvaluationResult(
     val isCorrect: Boolean,
-    val specificExplanation: String,
-    val generalExplanation: String
+    val explanation: String
 )
-
